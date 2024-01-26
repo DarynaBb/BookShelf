@@ -1,15 +1,14 @@
 import mongoose from "mongoose";
 
-export const MDBConnect = async () => {
-  const _pwd = process.env._pwd;
-    const _database = "musikfestival";
-    const _user = "_NAME";
-    const _cluster = process.env._cluster;
-    const _uri = `mongodb+srv://${_user}:${_pwd}@${_cluster}/${_database}?retryWrites=true&w=majority`;
-  try {
-    await mongoose.connect(_uri);
-    console.log('MDB connected');
-  } catch (error) {
-    console.error('MDB connection error:', error);
-  }
-};
+async function connectMongoose() {
+    const URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.CLUSTER}/${process.env.DB}?retryWrites=true&w=majority`;
+
+    try {
+        await mongoose.connect(URI);
+        console.log("connected to db");
+    } catch (error) {
+        console.error(error.message);
+    }
+}
+
+export {connectMongoose}
