@@ -1,13 +1,22 @@
 import express from "express";
 import "dotenv/config";
 import { connectMongoose } from "./utils/connectMongoose.js";
-import router from "./routes/bookRouter.js";
+import router from "./routes/userRouter.js";
+import cookieParser from "cookie-parser"
+import cors from "cors"
+
+
 
 const PORT = process.env.PORT || 3001;
 
-const connect = await connectMongoose();
+await connectMongoose();
 const app = express();
 app.use(express.json());
+app.use( cookieParser() );
+app.use( cors({
+    origin: "*", 
+    credentials: true 
+  }) );
 
 app.use("/", router)
 
