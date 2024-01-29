@@ -6,10 +6,6 @@ export const authenticateUser = (req, res, next) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
     const { username, password } = req.body;
-
- 
-
     next(); // Proceed to the next middleware or route
 };
