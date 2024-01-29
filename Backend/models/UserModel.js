@@ -9,10 +9,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  favorite:{
-    type: String,
-    
-  }
+  favoriteBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
 });
 
 const User = mongoose.model("User", userSchema);

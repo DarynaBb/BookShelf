@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import User from "../models/UserModel.js";
+import { Book } from "../models/BookModel.js";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
@@ -41,7 +42,6 @@ export const login = async (req, res) => {
         .status(401)
         .send("Invalid email or password. Please check your credentials.");
     }
-
     const userPassword = loggedUser.password;
     const registerPassword = req.body.password;
     const isPasswordValid = await bcrypt.compare(
@@ -62,13 +62,11 @@ export const login = async (req, res) => {
       const cookieOptions = {
         httpOnly: true,
         maxAge: expiresInMs,
-        sameSite: "None", // Adjust based on your CORS requirements
+        sameSite: "None",
       };
 
       res.cookie("jwtLogin1", token, cookieOptions);
-
       console.log("token :", token);
-
       const options = {
         maxAge: expiresInMs,
       };
@@ -79,7 +77,7 @@ export const login = async (req, res) => {
 
       res.cookie("loginInfo", payload, options);
 
-      res.send("Welcome back!" );
+      res.send("Welcome back!");
     } else {
       return res
         .status(401)
@@ -92,7 +90,9 @@ export const login = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-    res.clearCookie("jwtLogin1");
-    res.clearCookie("loginInfo");
-    res.send("You are logout!");
+  res.clearCookie("jwtLogin1");
+  res.clearCookie("loginInfo");
+  res.send(
+    "You have been successfully logged out. Thank you for using our services!"
+  );
 };
