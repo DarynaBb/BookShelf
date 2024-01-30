@@ -16,8 +16,9 @@ import BookImage2 from '../assets/image 27.png';
 import ContactBar from '../components/ContactBar';
 
 const books = [
-  { title: 'Buch 1', author: 'Autor 1', score: 4.5, isFavorite: false },
-  { title: 'Buch 2', author: 'Autor 2', score: 4.2, isFavorite: true },
+  { id: 1, title: 'Buch 1', author: 'Autor 1',score: 4.3, isFavorite: true, image: BookImage2 },
+  { id: 2, title: 'Buch 2', author: 'Autor 2',score: 3.8, isFavorite: false, image: BookImage2 },
+  { id: 3, title: 'Buch 3', author: 'Autor 3',score: 4.7, isFavorite: true, image: BookImage2 },
 ];
 
 const genres = [
@@ -57,7 +58,6 @@ const Home = () => {
             <div className="text-center">
                 <img src={BookImage} alt="Book" style={{ width: '100%', maxWidth: '800px', margin: 'auto' }} />
             </div>
-
             <BookCarousel books={books} />
 
             <GenreBar genres={genres} onSelectGenre={handleSelectGenre} />

@@ -1,5 +1,3 @@
-// GenreBar.jsx
-import React from 'react';
 import GenreCard from './GenreCard';
 
 const GenreBar = ({ genres, onSelectGenre }) => {

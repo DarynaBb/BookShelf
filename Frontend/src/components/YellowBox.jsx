@@ -1,5 +1,3 @@
-// YellowBox.jsx
-import React from 'react';
 
 const YellowBox = ({ children }) => {
     return (

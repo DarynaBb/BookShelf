@@ -1,5 +1,4 @@
 
-import React from 'react';
 import Book from './Book';
 
 const BookCarousel = ({ books }) => {
@@ -7,9 +6,9 @@ const BookCarousel = ({ books }) => {
         <div className="flex justify-between items-center bg-gray-200 p-4">
             <button>{'<'}</button>
             
-            {books.map((book, index) => (
-                <Book key={index} {...book} />
-            ))}
+            {books.map(book => (
+                    <Book key={book.id} book={book} />
+                ))}
 
             <button>{'>'}</button>
         </div>
