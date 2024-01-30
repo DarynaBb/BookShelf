@@ -1,9 +1,5 @@
-import React, { useState } from "react";
-import PhoneInput from "react-phone-number-input";
-import "react-phone-number-input/style.css";
-//import backendUrl from "../config/config.js";
-//import axios from "axios";
-//import { useNavigate } from "react-router-dom";
+// LoginDropdown.jsx
+import React, { useState } from 'react';
 
 const MyComponent = () => {
   const [isOpen, setIsOpen] = useState(false);

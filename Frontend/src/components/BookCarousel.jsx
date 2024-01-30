@@ -1,28 +1,14 @@
-import React, { useEffect } from 'react';
-import Glide from '@glidejs/glide'
+
 import Book from './Book';
 
 const BookCarousel = ({ books }) => {
-  useEffect(() => {
-    const glide01 = new Glide('.glide-01', {
-      type: 'carousel',
-      focusAt: 'center',
-      perView: 3,
-      autoplay: 3000,
-      animationDuration: 700,
-      gap: 24,
-      classes: {
-        activeNav: '[&>*]:bg-slate-700',
-      },
-      breakpoints: {
-        1024: {
-          perView: 2
-        },
-        640: {
-          perView: 1
-        }
-      },
-    });
+    return (
+        <div className="flex justify-between items-center bg-gray-200 p-4">
+            <button>{'<'}</button>
+            
+            {books.map(book => (
+                    <Book key={book.id} book={book} />
+                ))}
 
     glide01.mount();
 
