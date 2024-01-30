@@ -96,3 +96,24 @@ export const logout = async (req, res) => {
     "You have been successfully logged out. Thank you for using our services!"
   );
 };
+
+export const getUsersBooks = async (req, res) => {
+  const userId = req.params.id;
+  console.log(userId);
+  try {
+    const books = await User.findById(userId).populate("favoriteBooks");
+    console.log(books.favoriteBooks)
+    res.status(200).send(books.favoriteBooks);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
