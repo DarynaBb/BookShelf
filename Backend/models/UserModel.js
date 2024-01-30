@@ -11,15 +11,14 @@ const userSchema = new mongoose.Schema({
   },
   firstName: {type: String},
   lastName: {type: String},
-  photo: {type: String, default: "https://i.ibb.co/kGY5Pgn/userPic.jpg"},
   favoriteGenres: [],
-
   favoriteBooks: [
     {
       book: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
       shelfType: { type: String, default: "wantToRead"},
     },
   ]
+    // { type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
 });
 
 const User = mongoose.model("User", userSchema);
