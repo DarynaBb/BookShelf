@@ -99,111 +99,92 @@ const LoginDropdown = () => {
   };
 
   return (
-    <div className="relative">
+    <div className='relative'>
       {!isOpen && (
         <button
           onClick={toggleDropdown}
-          className="bg-gray-200 text-gray-800 px-4 py-2"
+          className='bg-gray-200 text-gray-800 px-4 py-2'
         >
           Sign up
         </button>
       )}
       {isOpen && (
-        <div className="fixed right-0 mt-2 w-{482} h-{702} flex-shrink-0 bg-white border border-gray-300 p-4">
+        <div className='fixed right-0 mt-2 w-{48}2 h-702 flex-shrink-0 bg-white border border-gray-300 p-4'>
           <svg
-            className="fixed right-4"
-            width="40"
-            height="40"
-            viewBox="0 0 40 40"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            className='fixed right-4'
+            width='40'
+            height='40'
+            viewBox='0 0 40 40'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
           >
             <path
-              d="M30.4992 9.51665C30.1878 9.20457 29.7651 9.02918 29.3242 9.02918C28.8834 9.02918 28.4606 9.20457 28.1492 9.51665L19.9992 17.65L11.8492 9.49999C11.5378 9.1879 11.1151 9.01251 10.6742 9.01251C10.2334 9.01251 9.8106 9.1879 9.49922 9.49999C8.84922 10.15 8.84922 11.2 9.49922 11.85L17.6492 20L9.49922 28.15C8.84922 28.8 8.84922 29.85 9.49922 30.5C10.1492 31.15 11.1992 31.15 11.8492 30.5L19.9992 22.35L28.1492 30.5C28.7992 31.15 29.8492 31.15 30.4992 30.5C31.1492 29.85 31.1492 28.8 30.4992 28.15L22.3492 20L30.4992 11.85C31.1326 11.2167 31.1326 10.15 30.4992 9.51665Z"
-              fill="black"
+              d='M30.4992 9.51665C30.1878 9.20457 29.7651 9.02918 29.3242 9.02918C28.8834 9.02918 28.4606 9.20457 28.1492 9.51665L19.9992 17.65L11.8492 9.49999C11.5378 9.1879 11.1151 9.01251 10.6742 9.01251C10.2334 9.01251 9.8106 9.1879 9.49922 9.49999C8.84922 10.15 8.84922 11.2 9.49922 11.85L17.6492 20L9.49922 28.15C8.84922 28.8 8.84922 29.85 9.49922 30.5C10.1492 31.15 11.1992 31.15 11.8492 30.5L19.9992 22.35L28.1492 30.5C28.7992 31.15 29.8492 31.15 30.4992 30.5C31.1492 29.85 31.1492 28.8 30.4992 28.15L22.3492 20L30.4992 11.85C31.1326 11.2167 31.1326 10.15 30.4992 9.51665Z'
+              fill='black'
             />
           </svg>
-          <div className="text-black text-32 font-normal flex">Sign up</div>
+          <div className='text-black text-32 font-normal'>Sign up</div>
 
           <form onSubmit={signUpHandler}>
-            <div className="mb-3">
-              <label htmlFor="firstname">Firstname</label>
+            <label htmlFor='firstname'>Firstname</label>
+            <div className='mb-3 w-{434} h-{48} border border-solid border-gray-300'>
               <input
-                className="w-{434} h-{48} border border-solid border-gray-300"
-                type="text"
-                name="firstname"
+                type='text'
+                name='firstname'
                 value={formData.firstname}
                 onChange={handleChange}
               />
             </div>
-
-            <div className="mb-3">
-              <label htmlFor="lastname">Lastname</label>
+            <label htmlFor='lastname'>Lastname</label>
+            <div className='mb-3 w-{434} h-{48} border border-solid border-gray-300'>
               <input
-                className="w-{434} h-{48} border border-solid border-gray-300"
-                type="text"
-                name="lastname"
+                type='text'
+                name='lastname'
                 value={formData.lastname}
                 onChange={handleChange}
               />
             </div>
-
-            <div className="mb-3">
-              <label htmlFor="countryCode">Telephone number:</label>
-              <div className="border border-gray-300">
-                <PhoneInput
-                  international
-                  defaultCountry="DE"
-                  value={phone}
-                  onChange={setPhone}
-                />
-              </div>
+            <label htmlFor='countryCode'>Telephone number:</label>
+            <div className="mb-3 w-{434} h-{48} border border-gray-300">
+              <PhoneInput
+                international
+                defaultCountry='DE'
+                value={phone}
+                onChange={setPhone}
+              />
             </div>
-
-            <div className="mb-3">
-              <label htmlFor="email">Email</label>
+            <label htmlFor='email'>Email</label>
+            <div className={`mb-3 w-{434} h-{48} border border-solid ${emailError ? 'border-red-500' : 'border-solid'} border-gray-300`}>
               <input
-                className={`w-{434} h-{48} border ${
-                  emailError ? "border-red-500" : "border-solid"
-                } border-gray-300`}
-                type="email"
-                name="email"
+                type='email'
+                name='email'
                 value={formData.email}
                 onChange={handleChange}
               />
             </div>
-
-            <div className="mb-3">
-              <label htmlFor="password">Password</label>
-              <input
-                className={`w-{434} h-{48} border ${
-                  !passwordError ? "border-red-500" : "border-solid"
-                } border-gray-300`}
-                type="password"
-                name="password"
+            <label htmlFor='password'>Password</label>
+            <div className={`mb-3 w-{434} h-{48} border ${!passwordError ? 'border-red-500' : 'border-solid'} border-gray-300`}>              <input
+                type='password'
+                name='password'
                 value={formData.password}
                 onChange={handleChange}
               />
             </div>
-
-            <div className="mb-3">
-              <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor='confirmPassword'>Confirm Password</label>
+            <div className='mb-3 w-{434} h-{48} border border-solid border-gray-300'>
               <input
-                className="w-{434} h-{48} border border-solid border-gray-300"
-                type="password"
-                name="confirmPassword"
+                type='password'
+                name='confirmPassword'
                 value={formData.confirmPassword}
                 onChange={handleChange}
               />
             </div>
-
             {errorMessage && (
               <div className="text-red-500 text-sm mt-2">{errorMessage}</div>
             )}
-
             <button
-              type="submit"
-              className="w-{435} h-{56} flex-shrink-0 justify-center bg-black rounded-sm text-white px-20 py-5"
+              type='submit'
+              className='w-{435} h-{56} flex-shrink-0 justify-center bg-black rounded-sm text-white px-20 py-5'
             >
               SIGN UP
             </button>
