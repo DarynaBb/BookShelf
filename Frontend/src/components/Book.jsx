@@ -1,15 +1,32 @@
-// Book.jsx
-import React from 'react';
-import BookImage from '../assets/image 27.png';
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
-const Book = ({ title, author, score, isFavorite }) => {
+const Book = ({ book }) => {
+    const [isFavorite, setIsFavorite] = useState(book && book.isFavorite);
+
+    const toggleFavorite = () => {
+        setIsFavorite(!isFavorite);
+    };
+
     return (
         <div className="flex flex-col items-center">
-            <img src={BookImage} alt={title} className="mb-2" />
-            <div>{title}</div>
-            <div>{author}</div>
-            <div>{score}</div>
-            <button>{isFavorite ? 'Favorit entfernen' : 'Als Favorit markieren'}</button>
+            <img src={book.image} alt="image" className="mb-2"/>
+            <h2>{book && book.title}</h2>
+            <p>{book && book.author}</p>
+            <p>{book && book.score}</p>
+            <FontAwesomeIcon
+                icon={faHeart}
+                className={isFavorite ? 'favorite' : 'not-favorite'}
+                onClick={toggleFavorite}
+            />
+            {!isFavorite && (
+                <FontAwesomeIcon
+                    icon={faHeart}
+                    className="empty-heart"
+                    onClick={toggleFavorite}
+                />
+            )}
         </div>
     );
 };

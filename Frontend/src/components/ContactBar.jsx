@@ -1,5 +1,3 @@
-// ContactBar.jsx
-import React from 'react';
 
 const ContactBar = () => {
     return (

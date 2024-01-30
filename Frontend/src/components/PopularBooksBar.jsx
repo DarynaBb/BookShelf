@@ -1,5 +1,3 @@
-// PopularBooksBar.jsx
-import React from 'react';
 
 const PopularBooksBar = ({ books }) => {
     return (

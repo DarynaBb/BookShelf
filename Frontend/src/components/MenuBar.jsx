@@ -1,4 +1,3 @@
-
 import LoginDropdown from './LoginDropdown';
 
 const MenuBar = () => {
