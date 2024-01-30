@@ -1,26 +1,52 @@
-import { useState } from 'react';
+import { useState } from "react";
+import LoginPage from "./LoginPage"; 
+import RegisterPage from "./RegisterPage"; 
 
 const LoginDropdown = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoginPage, setIsLoginPage] = useState(true);
 
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
-    return (
-        <div className="relative">
-            <button onClick={toggleDropdown} className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md">Anmelden</button>
-            {isOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg">
-                    <ul>
-                        <li className="py-2 px-4 hover:bg-gray-100">Option 1</li>
-                        <li className="py-2 px-4 hover:bg-gray-100">Option 2</li>
-                        <li className="py-2 px-4 hover:bg-gray-100">Option 3</li>
-                    </ul>
-                </div>
-            )}
+  const toggleLoginRegister = () => {
+    setIsLoginPage(!isLoginPage);
+  };
+
+  const openRegisterDropdown = () => {
+    setIsOpen(true);
+    setIsLoginPage(false);
+  };
+
+  return (
+    <div className="relative">
+      <button
+        onClick={toggleDropdown}
+        className="text-gray-800 font-semibold focus:outline-none"
+      >
+        {isLoginPage ? "Anmelden" : "Registrieren"}
+      </button>
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-64 bg-white border rounded shadow-lg p-4">
+          {isLoginPage ? (
+            <LoginPage openRegisterDropdown={openRegisterDropdown} />
+          ) : (
+            <RegisterPage />
+          )}
+          <button
+            onClick={toggleLoginRegister}
+            className="mt-2 block text-sm text-gray-700"
+          >
+            {isLoginPage ? "Noch keinen Account? " : "Bereits registriert? "}
+            <span className="text-blue-500">
+              {isLoginPage ? "Registrieren" : "Anmelden"}
+            </span>
+          </button>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default LoginDropdown;
