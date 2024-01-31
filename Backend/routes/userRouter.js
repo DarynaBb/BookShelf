@@ -10,6 +10,9 @@ router
   .post("/logout", logout)
   .get("/allBooks/:id", getUsersBooks)
   .get("/users", getAllUsers)
+  // .get("/user/:id", getUserData)
+  // .patch("/user/:id", updateUser)
+
 
 
 export default router;

@@ -5,12 +5,11 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 export const registerUser = async (req, res) => {
-  const { firstname, lastname, telephone, email, password } = req.body;
+  const { firstname, lastname, telephone, email, password, photo } = req.body;
 
   if (!email) {
     return res.status(400).send("Please provide email for registration");
   }
-
   const hashedPassword = await bcrypt.hash(password, 10);
   const newUserLoginData = new User({
     firstname: firstname,
@@ -18,6 +17,7 @@ export const registerUser = async (req, res) => {
     phone: telephone,
     email: email,
     password: hashedPassword,
+    photo: photo
   });
 
   try {
@@ -120,4 +120,4 @@ export const getAllUsers = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+}

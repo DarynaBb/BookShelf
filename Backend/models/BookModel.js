@@ -14,12 +14,3 @@ const bookSchema = new mongoose.Schema({
 });
 
 export const Book = mongoose.model("Book", bookSchema);
-
-const userBookSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  book: { type: mongoose.Schema.Types.ObjectId, ref: 'Book', required: true },
-});
-
-// export const AlreadyRead = mongoose.model("AlreadyRead", userBookSchema);
-// export const WantRead = mongoose.model("WantRead", userBookSchema);
-// export const CurrentlyReading = mongoose.model("CurrentlyReading", userBookSchema);

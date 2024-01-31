@@ -1,5 +1,3 @@
-// AuthorBar.jsx
-import React from 'react';
 
 const AuthorBar = ({ authors, onSelectAuthor }) => {
     return (
