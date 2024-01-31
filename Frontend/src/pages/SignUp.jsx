@@ -19,7 +19,6 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
   const navigate = useNavigate();
   const closeForm = () => {
     setIsOpen(false);
@@ -33,7 +32,6 @@ const SignUp = () => {
     const telephone = phone;
     const email = form.email.value;
     const password = form.password.value;
-
     if (
       firstname.trim() === "" ||
       lastname.trim() === "" ||
@@ -71,7 +69,6 @@ const SignUp = () => {
         setPasswordError(false);
         setErrorMessage("");
         navigate("/home");
-
         // window.location.href = "/myAccount";
         console.log(" Register done:", resp.data);
       } else {
