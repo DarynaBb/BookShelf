@@ -7,3 +7,21 @@
         all: unset;
     }
 }
+
+@layer utilities {
+    .max-container {
+      @apply mx-auto max-w-[1240px];
+    }
+  
+    .padding-container {
+      @apply px-[35px] py-[20px];
+    }
+  
+    .max-container-nav {
+      @apply mx-auto max-w-[1095px];
+    }
+  
+    .padding-container-nav {
+      @apply px-[120px] py-[20px];
+    }
+  }

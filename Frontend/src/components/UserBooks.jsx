@@ -51,7 +51,7 @@ function UserBooks() {
   }
 
   return (
-    <section className='p-[30px]'>
+    <section className=''>
       <div className='flex justify-between'>
         <div>
           <h3 onClick={onClickHandler}>My books</h3>
