@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 export const registerUser = async (req, res) => {
-  const { firstname, lastname, telephone, email, password } = req.body;
+  const { email, password, firstName, lastName, photo } = req.body;
 
   if (!email) {
     return res.status(400).send("Please provide email for registration");
@@ -18,6 +18,9 @@ export const registerUser = async (req, res) => {
     phone: telephone,
     email: email,
     password: hashedPassword,
+    firstName: firstName,
+    lastName: lastName,
+    photo: photo
   });
 
   try {
@@ -120,4 +123,38 @@ export const getAllUsers = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-};
+}
+
+export const getUserData = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const user = await User.findById(userId);
+    if(!user) {
+      return res.status(404).send("User not found");
+    }
+    res.status(200).send(user);
+  } catch (error) {
+    console.error(error);
+      res
+        .status(500)
+        .json({ message: "Internal Server Error", error: error.message });
+  }
+}
+
+export const updateUser = async (req, res) => {
+  const userId = req.params.id;
+  const {firstName, lastName, email} = req.body;
+  try {
+    const user = await User.findByIdAndUpdate(userId, {firstName, lastName, email});
+    if(!user) {
+      return res.status(404).send("User not found");
+    }
+    res.status(200).send("User was updated");
+  } catch (error) {
+    console.error(error);
+      res
+        .status(500)
+        .json({ message: "Internal Server Error", error: error.message });
+  }
+  
+}
