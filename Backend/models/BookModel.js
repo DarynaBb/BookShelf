@@ -20,6 +20,6 @@ const userBookSchema = new mongoose.Schema({
   book: { type: mongoose.Schema.Types.ObjectId, ref: 'Book', required: true },
 });
 
-export const AlreadyRead = mongoose.model("AlreadyRead", userBookSchema);
-export const WantRead = mongoose.model("WantRead", userBookSchema);
-export const CurrentlyReading = mongoose.model("CurrentlyReading", userBookSchema);
+// export const AlreadyRead = mongoose.model("AlreadyRead", userBookSchema);
+// export const WantRead = mongoose.model("WantRead", userBookSchema);
+// export const CurrentlyReading = mongoose.model("CurrentlyReading", userBookSchema);
