@@ -1,4 +1,3 @@
-import React from 'react';
 import SearchBar from '../components/SearchBar';
 import BookImage from '../assets/image-29.png';
 import RomanceImage from '../assets/image 62.png';
@@ -50,7 +49,7 @@ const handleSearch = (query) => {
   console.log('Suche nach:', query);
 };
 
-const Home = () => {
+const HomeLogIn = () => {
     return (
         <div className='bg-[#ffeed94c]'>
             <MenuBar />
@@ -76,4 +75,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomeLogIn;
