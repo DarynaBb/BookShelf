@@ -1,5 +1,3 @@
-// GenreCard.jsx
-import React from 'react';
 
 const GenreCard = ({ name, image, onSelect }) => {
     return (
