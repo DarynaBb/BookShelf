@@ -16,8 +16,11 @@ function UserProfile() {
 
   useEffect(() => {
     getUserData();
+    setFirstName(user.firstName);
+    setLastName(user.lastName);
+    setEmail(user.email);
     console.log(email, firstName, lastName)
-  }, [email, firstName, lastName])
+  }, [])
 
   const onClickHandler = () => {
     if(isProfileOpen) {
