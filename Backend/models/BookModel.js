@@ -16,6 +16,3 @@ const bookSchema = new mongoose.Schema({
 export const Book = mongoose.model("Book", bookSchema);
 
 
-// export const AlreadyRead = mongoose.model("AlreadyRead", userBookSchema);
-// export const WantRead = mongoose.model("WantRead", userBookSchema);
-// export const CurrentlyReading = mongoose.model("CurrentlyReading", userBookSchema);
