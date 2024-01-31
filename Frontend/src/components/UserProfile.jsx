@@ -45,7 +45,7 @@ function UserProfile() {
     <section className=''>
       <div className='flex justify-between'>
         <div className={`${isProfileOpen ? "block" : "hidden"} w-full`}>
-          <h2 className="block pt-regular text-[32px]">Profile</h2>
+          <h2 className="block pt-bold text-[32px]">Profile</h2>
           <div className='flex justify-center gap-[20px]'>
             <div className='flex items-center flex-col gap-[16px] mb-[40px]'>
               <img className='max-w-[210px]' src={user.photo} alt="user photo" />

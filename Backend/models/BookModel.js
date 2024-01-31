@@ -6,11 +6,7 @@ const bookSchema = new mongoose.Schema({
   description: { type: String },
   publishedDate: { type: String },
   averageRating: {type: String},
-  imageLinks: {
-    thumbnail: { type: String },
-    large: { type: String },
-    medium: { type: String },
-  },
+  image: {type: String}
 });
 
 export const Book = mongoose.model("Book", bookSchema);
