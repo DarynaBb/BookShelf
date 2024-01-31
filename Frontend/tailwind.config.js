@@ -2,7 +2,11 @@
 export default {
   content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
   theme: {
-      extend: {},
+      extend: {
+        colors: {
+          "bg-gray": '#F4F5F5'
+      },
+      },
   },
   plugins: [],
 };
