@@ -12,8 +12,6 @@ function UserProfile() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
-
-
   useEffect(() => {
     getUserData();
     console.log(email, firstName, lastName)

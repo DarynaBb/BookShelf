@@ -108,15 +108,14 @@ const SignUp = () => {
       {!isOpen && (
         <button
           onClick={toggleDropdown}
-          className='bg-gray-200 text-gray-800 px-4 py-2'
-        >
+          className='bg-gray-200 text-gray-800 text-lg px-4 py-2 hover:shadow-md'>
           Sign up
         </button>
       )}
       {isOpen && (
-        <span className='absolute top-0 right-0 mt-2 w-482 h-720 flex-shrink-0 bg-white border border-gray-300 p-4'>
+        <span className='fixed top-1 right-1 mt-2 w-482 h-720 flex-shrink-0 bg-white border border-gray-300 p-4'>
           <svg
-            className='fixed right-5 top-10 cursor-pointer'
+            className='fixed right-5 top-5 cursor-pointer'
             width='30'
             height='30'
             viewBox='0 0 40 40'
