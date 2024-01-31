@@ -14,17 +14,17 @@ const SearchBar = ({ onSearch }) => {
   return (
     <div>
       {/* <!-- Component: Plain large search input  --> */}
-      <div class="relative my-6">
+      <div className="relative my-6">
         <input
           id="id-l15"
           type="text"
           name="id-l15"
           placeholder="Search by title, author or genre"
-          class="relative w-full h-12 px-4 pr-12 transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+          className="relative w-full h-12 px-4 pr-12 transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="absolute w-6 h-6 cursor-pointer top-3 right-4 stroke-slate-400 peer-disabled:cursor-not-allowed"
+          className="absolute w-6 h-6 cursor-pointer top-3 right-4 stroke-slate-400 peer-disabled:cursor-not-allowed"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -54,9 +54,9 @@ const SearchBar = ({ onSearch }) => {
                 placeholder="Suche nach Büchern oder Genre..."
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="border border-gray-300 p-2 rounded-md w-84"
+                classNameName="border border-gray-300 p-2 rounded-md w-84"
             />
-            <button onClick={handleSearch} className="bg-blue-500 text-white px-4 py-2 rounded-md ml-2">
+            <button onClick={handleSearch} classNameName="bg-blue-500 text-white px-4 py-2 rounded-md ml-2">
                 Suche
             </button> */
 }
