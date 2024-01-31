@@ -7,7 +7,7 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Registrieren</h2>
+      <h2 className="text-xl font-semibold mb-4">Sign up</h2>
       <form onSubmit={handleRegister}>
         <input
           type="text"
@@ -28,7 +28,7 @@ const RegisterPage = () => {
           type="submit"
           className="w-full bg-blue-500 text-white font-semibold rounded px-4 py-2 hover:bg-blue-600"
         >
-          Registrieren
+          Sign up
         </button>
       </form>
     </div>
