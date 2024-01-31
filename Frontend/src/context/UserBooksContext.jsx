@@ -9,7 +9,6 @@ const UserBooksContextProvider = ({ children }) => {
     const [isWantToRead, setIsWantToRead] = useState(false);
     const [isRead, setIsRead] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [users, setUsers] = useState([]);
     const [currentlyReading, setCurrentlyReading] = useState([]);
     const [wantToRead, setWantToRead] = useState([]);
     const [read, setRead] = useState([]);
