@@ -125,11 +125,11 @@ export const getAllUsers = async (req, res) => {
   }
 }
 
-export const getUserData = async (req, res) => {
+export const getUserData = async(req, res) => {
   const userId = req.params.id;
   try {
     const user = await User.findById(userId);
-    if(!user) {
+    if (!user) {
       return res.status(404).send("User not found");
     }
     res.status(200).send(user);
@@ -141,20 +141,16 @@ export const getUserData = async (req, res) => {
   }
 }
 
-export const updateUser = async (req, res) => {
+export const updateUser = async(req, res) => {
   const userId = req.params.id;
-  const {firstName, lastName, email} = req.body;
+  const {email, firstName, lastName} = req.body;
   try {
-    const user = await User.findByIdAndUpdate(userId, {firstName, lastName, email});
-    if(!user) {
+    const user = await User.findByIdAndUpdate(userId, {email, firstName, lastName});
+    if (!user) {
       return res.status(404).send("User not found");
     }
     res.status(200).send("User was updated");
   } catch (error) {
-    console.error(error);
-      res
-        .status(500)
-        .json({ message: "Internal Server Error", error: error.message });
+    
   }
-  
 }
