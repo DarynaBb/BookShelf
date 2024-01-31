@@ -7,7 +7,7 @@ const LoginPage = ({ openRegisterDropdown }) => {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Anmelden</h2>
+      <h2 className="text-xl font-semibold mb-4">Log in</h2>
       <form onSubmit={handleLogin}>
         <input
           type="text"
@@ -23,7 +23,7 @@ const LoginPage = ({ openRegisterDropdown }) => {
           type="submit"
           className="w-full bg-blue-500 text-white font-semibold rounded px-4 py-2 hover:bg-blue-600"
         >
-          Anmelden
+          Log in
         </button>
       </form>
     </div>
