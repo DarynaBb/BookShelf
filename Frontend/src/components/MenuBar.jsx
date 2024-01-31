@@ -1,7 +1,9 @@
+import Logout from './Logout';
+import UserProfile from "../pages/UserProfile"
 
-import LoginDropdown from './LoginDropdown';
 
 const MenuBar = () => {
+
     return (
         <div className="flex justify-between items-center bg-gray-200 p-4">
             <div className="flex">
@@ -9,10 +11,11 @@ const MenuBar = () => {
                 <ul className="flex">
                     <li className="mr-4">Home</li>
                     <li className="mr-4">Shop</li>
-                    <li className="mr-4">Über uns</li>
+                    <li className="mr-4">About us</li>
                 </ul>
             </div>
-            <LoginDropdown />
+            <UserProfile/>
+              <Logout /> 
         </div>
     );
 };
