@@ -13,8 +13,14 @@ export const registerUser = async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
   const newUserLoginData = new User({
+    firstname: firstname,
+    lastname: lastname,
+    phone: telephone,
     email: email,
     password: hashedPassword,
+    firstName: firstName,
+    lastName: lastName,
+    photo: photo
   });
 
   try {
@@ -22,11 +28,12 @@ export const registerUser = async (req, res) => {
     res.status(201).send("User's login data was successfully saved");
   } catch (error) {
     if (error.code === 11000) {
-      console.error("Error during registration:", error.message);
+      console.error("registration:", error.message);
       return res
         .status(400)
         .send("Email or phone number is already registered.");
     } else {
+      console.log("here is error")
       console.error("Error during registration:", error.message);
       return res.status(500).send("Internal Server Error");
     }
@@ -102,12 +109,12 @@ export const getUsersBooks = async (req, res) => {
   console.log(userId);
   try {
     const books = await User.findById(userId).populate("favoriteBooks");
-    console.log(books.favoriteBooks)
+    console.log(books.favoriteBooks);
     res.status(200).send(books.favoriteBooks);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 export const getAllUsers = async (req, res) => {
   try {
