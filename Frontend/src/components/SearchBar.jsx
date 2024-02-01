@@ -7,18 +7,27 @@ const SearchBar = ({ onSearch }) => {
     setSearchQuery(e.target.value);
   };
 
-  const handleSearch = () => {
-    onSearch(searchQuery);
+  const handleSearch = async () => {
+    try {
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=Harry+Potter`);
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      // Verarbeite die Daten hier, z.B. aktualisiere den Zustand oder rufe die onSearch-Funktion mit den Daten auf
+      onSearch(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   };
 
   return (
     <div>
-      {/* <!-- Component: Plain large search input  --> */}
+
       <div className="relative my-6">
         <input
-          id="id-l15"
           type="text"
-          name="id-l15"
           placeholder="Search by title, author or genre"
           className="relative w-full h-12 px-4 pr-12 transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
         />
@@ -30,34 +39,18 @@ const SearchBar = ({ onSearch }) => {
           stroke="currentColor"
           strokeWidth="1.5"
           aria-hidden="true"
-          aria-labelledby="title-11 description-11"
-          role="graphics-symbol"
           onClick={handleSearch}
         >
-          <title id="title-11">Search icon</title>
-          <desc id="description-11">Icon description here</desc>
+          <title>Search icon</title>
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
           />
         </svg>
       </div>
-      {/* <!-- End Plain large search input --> */}
+      {/* Ende Einfache große Sucheingabe */}
     </div>
   );
 };
-
-{
-  /* <input
-                type="text"
-                placeholder="Suche nach Büchern oder Genre..."
-                value={searchQuery}
-                onChange={handleSearchChange}
-                classNameName="border border-gray-300 p-2 rounded-md w-84"
-            />
-            <button onClick={handleSearch} classNameName="bg-blue-500 text-white px-4 py-2 rounded-md ml-2">
-                Suche
-            </button> */
-}
 export default SearchBar;

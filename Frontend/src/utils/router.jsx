@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import HomeLogIn from "../pages/HomeLogIn";
 import SignUp from "../pages/SignUp";
 import UserAccount from '../pages/UserAccount';
+import SearchResultPage from '../pages/SearchResultPage';
 
 
 const router = createBrowserRouter([
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
       { path: '/home', element: <HomeLogIn /> },
       { path: '/signup', element: <SignUp /> },
       { path: '/myAccount', element: <UserAccount /> },
+      { path: '/search', element: <SearchResultPage /> },
       {
         path: '*',
         element: <PageNotFound />,
