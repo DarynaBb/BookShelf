@@ -49,7 +49,7 @@ const handleSearch = (query) => {
   console.log('Suche nach:', query);
 };
 
-const HomeLogIn = () => {
+const Main = () => {
     return (
         <div className='bg-[#ffeed94c]'>
             <MenuBar />
@@ -75,4 +75,4 @@ const HomeLogIn = () => {
     );
 };
 
-export default HomeLogIn;
+export default Main;
