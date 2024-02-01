@@ -8,6 +8,7 @@ import { useAuth } from "../context/LoginContext";
 import { UserProfileContext } from "../context/UserProfileContext";
 
 
+
 const MenuBar = () => {
   const userProfileContext = useContext(UserProfileContext);
   const authContext = useAuth();

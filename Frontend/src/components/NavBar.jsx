@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import leaf from "../assets/leaf.jpg"
 
+
+
 function NavBar() {
   return (
     <header className='max-container padding-container'>

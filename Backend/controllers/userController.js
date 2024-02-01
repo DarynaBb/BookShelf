@@ -3,10 +3,8 @@ import User from "../models/UserModel.js";
 import { Book } from "../models/BookModel.js";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
-
 export const registerUser = async (req, res) => {
-  const { email, password } = req.body;
-
+  const { firstname,lastname, telephone, email, password } = req.body;
   if (!email) {
     return res.status(400).send("Please provide email for registration");
   }
@@ -18,7 +16,6 @@ export const registerUser = async (req, res) => {
     email: email,
     password: hashedPassword,
   });
-
   try {
     await newUserLoginData.save();
     res.status(201).send("User's login data was successfully saved");
@@ -35,11 +32,9 @@ export const registerUser = async (req, res) => {
     }
   }
 };
-
 export const login = async (req, res) => {
   try {
     const loggedUser = await User.findOne({ email: req.body.email });
-
     if (!loggedUser) {
       return res
         .status(401)
@@ -51,23 +46,18 @@ export const login = async (req, res) => {
       registerPassword,
       userPassword
     );
-
     if (isPasswordValid) {
       const expiresInMs = 30 * 60 * 1000;
       const expiresInDate = new Date(Date.now() + expiresInMs);
-
       const secret = process.env.JWT_SECRET;
-
       const token = jwt.sign({ userId: loggedUser._id }, secret, {
         expiresIn: expiresInMs / 1000,
       });
-
       const cookieOptions = {
         httpOnly: true,
         maxAge: expiresInMs,
         sameSite: "None",
       };
-
       res.cookie("jwtLogin1", token, cookieOptions);
       console.log("token :", token);
       const options = {
@@ -77,9 +67,7 @@ export const login = async (req, res) => {
         expires: expiresInDate.toISOString(),
         email: loggedUser.email,
       };
-
       res.cookie("loginInfo", payload, options);
-
       res.send("Welcome back!");
     } else {
       return res
@@ -91,7 +79,6 @@ export const login = async (req, res) => {
     return res.status(500).send("Internal Server Error");
   }
 };
-
 export const logout = async (req, res) => {
   res.clearCookie("jwtLogin1");
   res.clearCookie("loginInfo");
@@ -99,7 +86,6 @@ export const logout = async (req, res) => {
     "You have been successfully logged out. Thank you for using our services!"
   );
 };
-
 export const getUsersBooks = async (req, res) => {
   const userId = req.params.id;
   console.log(userId);
@@ -111,7 +97,6 @@ export const getUsersBooks = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 }
-
 export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -120,7 +105,6 @@ export const getAllUsers = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 }
-
 export const getUserData = async(req, res) => {
   const userId = req.params.id;
   try {
@@ -136,7 +120,6 @@ export const getUserData = async(req, res) => {
         .json({ message: "Internal Server Error", error: error.message });
   }
 }
-
 export const updateUser = async(req, res) => {
   const userId = req.params.id;
   const {email, firstName, lastName} = req.body;
@@ -147,57 +130,18 @@ export const updateUser = async(req, res) => {
     }
     res.status(200).send("User was updated");
   } catch (error) {
-    
   }
 }
 
-export const getUsersBooks = async (req, res) => {
-  const userId = req.params.id;
-  console.log(userId);
-  try {
-    const books = await User.findById(userId).populate("favoriteBooks");
-    console.log(books.favoriteBooks);
-    res.status(200).send(books.favoriteBooks);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
 
-export const getAllUsers = async (req, res) => {
-  try {
-    const users = await User.find();
-    res.status(200).send(users);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-}
 
-export const getUserData = async(req, res) => {
-  const userId = req.params.id;
-  try {
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    res.status(200).send(user);
-  } catch (error) {
-    console.error(error);
-      res
-        .status(500)
-        .json({ message: "Internal Server Error", error: error.message });
-  }
-}
 
-export const updateUser = async(req, res) => {
-  const userId = req.params.id;
-  const {email, firstName, lastName, photo} = req.body;
-  try {
-    const user = await User.findByIdAndUpdate(userId, {email, firstName, lastName, photo});
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    res.status(200).send("User was updated");
-  } catch (error) {
-    
-  }
-}
+
+
+
+
+
+
+
+
+
