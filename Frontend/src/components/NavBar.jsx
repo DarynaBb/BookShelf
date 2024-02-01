@@ -8,15 +8,17 @@ function NavBar() {
     <nav className='flex w-full justify-between items-center'>
         <ul className='flex gap-[50px] inter-medium items-center'>
             <li className='flex items-center'>
-                <Link className='inter-medium' to="/main">Discover our garden
+                <Link className='inter-medium' to="/">Discover our garden
                 </Link>
                 <img className='w-[30px]' src={leaf} alt="" />
             </li>
             <li>
-                <Link className='inter-medium' to="/myAccount">My books</Link>
+                <Link className='inter-medium' to="/myBooks">My books</Link>
             </li>
         </ul>
-        <h1 className='uppercase open-sans-bold text-[32px]'>book garden</h1>
+        <h1 className='uppercase open-sans-bold text-[32px]'>
+            <Link to="/">book garden</Link> 
+        </h1>
         <ul className='flex justify-between gap-[50px]'>
             <li>
                 <Link className='inter-medium' to="/myAccount">My Account</Link>
