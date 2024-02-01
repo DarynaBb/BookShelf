@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = ({ onSearch }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -9,13 +10,12 @@ const SearchBar = ({ onSearch }) => {
 
   const handleSearch = async () => {
     try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=Harry+Potter`);
+      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=Harry+Potter`);
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      // Verarbeite die Daten hier, z.B. aktualisiere den Zustand oder rufe die onSearch-Funktion mit den Daten auf
       onSearch(data);
     } catch (error) {
       console.error('Error fetching data:', error);
