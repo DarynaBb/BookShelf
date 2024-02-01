@@ -1,11 +1,13 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Root from '../components/Root';
+import { createBrowserRouter } from "react-router-dom";
+import Root from "../components/Root";
 import PageNotFound from "../pages/PageNotFound";
 import Home from "../pages/Home";
 import Main from "../pages/Main";
-import SignUp from "../pages/SignUp";
 import UserAccount from '../pages/UserAccount';
 import SearchResultPage from '../pages/SearchResultPage';
+import MyAccount from '../pages/MyAccount';
+import MyBooks from '../pages/MyBooks';
+
 
 
 const router = createBrowserRouter([
@@ -14,11 +16,12 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/main', element: <Main /> },
-      { path: '/signup', element: <SignUp /> },
       { path: '/myAccount', element: <UserAccount /> },
       { path: '/search', element: <SearchResultPage /> },
+      {path: '/myAccount', element: <MyAccount />},
+      {path: '/myBooks', element: <MyBooks />},
       {
-        path: '*',
+        path: "*",
         element: <PageNotFound />,
       },
     ],
