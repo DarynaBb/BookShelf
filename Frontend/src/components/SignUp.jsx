@@ -27,7 +27,6 @@ const SignUp = () => {
   const closeForm = () => {
     setIsOpen(false);
   };
-
   const SignUpHandler = async (e) => {
     e.preventDefault();
     const form = e.target;
