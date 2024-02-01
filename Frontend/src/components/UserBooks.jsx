@@ -170,7 +170,7 @@ function UserBooks() {
 
   return (
     <section className=''>
-      <h2 className={isMyBooksOpen ? "block pt-bold text-[32px]" : "hidden"}>My Books</h2>
+      <h2 className={isMyBooksOpen ? "block pt-regular text-[32px]" : "hidden"}>My Books</h2>
       <div className='mt-[45px]'>
         {isCurrentlyReading && renderBookList(currentlyReading, "Currently Reading")}
         {isWantToRead && renderBookList(wantToRead, "Want To Read")}
