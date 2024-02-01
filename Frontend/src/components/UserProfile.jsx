@@ -1,39 +1,28 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserProfileContext } from '../context/UserProfileContext';
+import { UserBooksContext } from '../context/UserBooksContext';
+import axios from 'axios';
 import UserData from './UserData';
 import FormUserData from './FormUserData';
 
 function UserProfile() {
-  const {isProfileOpen,  getUserData, isUserUpdated, setIsUserUpdated } = useContext(UserProfileContext);
+  const {isProfileOpen, setIsProfileOpen, getUserData, isLoading, user, userId, isEditing, setIsEditing, isUserUpdated, setIsUserUpdated } = useContext(UserProfileContext);
+  const {setIsMyBooksOpen, setIsCurrentlyReading, setIsWantToRead, setIsRead, url } = useContext(UserBooksContext);
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [photo, setPhoto] = useState("");
   
+
   useEffect(() => {
     getUserData();
     setIsUserUpdated(false);
+    
   }, [isUserUpdated])
 
- 
 
-  const updateUserField = async (e, field) => {
-    e.preventDefault();
-    const axiosUrl = `${url}/user/${userId}`;
   
-    try {
-      if (field === "firstName" || field === "lastName" || field === "email" || field === "photo") {
-        const dataToUpdate = { [field]: eval(field) }; // Using eval to access dynamic variable
-        await axios.patch(axiosUrl, dataToUpdate);
-        setFirstName(""); 
-        setLastName("");
-        setEmail("");
-        setPhoto("");
-        setIsUserUpdated(true);
-        console.log("Yeiii!");
-      } else {
-        console.log("Invalid field provided. No update performed.");
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  
   
   return (
     <section className=''>

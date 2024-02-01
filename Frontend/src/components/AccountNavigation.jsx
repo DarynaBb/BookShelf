@@ -10,10 +10,10 @@ function AccountNavigation() {
     <h2 className='pt-regular text-[32px] mb-[20px]'>Account</h2>
         <ul className='flex flex-col gap-[10px]'>
             <li className={location.pathname === "/myAccount" ? "bg-bg-gray" : ""}>
-                <NavLink to="/myAccount" className="inline-block py-[3px] inter-regular">Profile</NavLink>
+                <NavLink to="/myAccount" className="inline-block py-[3px]">Profile</NavLink>
             </li>
             <li className={location.pathname === "/myBooks" ? "bg-bg-gray" : ""}>
-                <NavLink className="inline-block py-[3px] inter-regular" to="/myBooks">My Books</NavLink>   
+                <NavLink className="inline-block py-[3px]" to="/myBooks">My Books</NavLink>   
             </li>
         </ul> 
     </>    
