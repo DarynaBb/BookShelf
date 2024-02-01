@@ -19,18 +19,6 @@ function UserProfile() {
     setIsUserUpdated(false);
   }, [isUserUpdated])
 
-  const onClickHandler = () => {
-    if(isProfileOpen) {
-      setIsProfileOpen(false);
-    } else {
-      setIsProfileOpen(true);
-      setIsMyBooksOpen(false);
-      setIsCurrentlyReading(false);
-      setIsWantToRead(false);
-      setIsRead(false);
-    }
-  }
-
   const updateUserField = async (e, field) => {
     e.preventDefault();
     const axiosUrl = `${url}/user/${userId}`;
@@ -56,8 +44,8 @@ function UserProfile() {
   return (
     <section className=''>
       <div className='flex justify-between'>
-        <h3 className='cursor-pointer' onClick={onClickHandler}>Profile</h3>
         <div className={`${isProfileOpen ? "block" : "hidden"} w-full`}>
+          <h2 className="block pt-bold text-[32px]">Profile</h2>
           <div className='flex justify-center gap-[20px]'>
             <div className='flex items-center flex-col gap-[16px] mb-[40px]'>
               <img className='max-w-[210px]' src={user.photo} alt="user photo" />

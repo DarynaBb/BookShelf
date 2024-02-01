@@ -6,7 +6,7 @@ export const addNewBook = async (req, res) => {
     try {
       const newBook = new Book(req.body);
       await newBook.save();
-      res.status(201).send(newBook);
+      res.status(201).send("Book was added");
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

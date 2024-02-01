@@ -1,6 +1,6 @@
-//import leaf from "./assets/leaf.jpg"
 import React, { useContext } from 'react';
 import Logout from "./Logout";
+import leaf from "../assets/leaf.jpg"
 import { Link } from "react-router-dom";
 import AccountInMenu from "./AccountInMenu";
 import SignUp from "../pages/SignUp";
@@ -22,7 +22,7 @@ const MenuBar = () => {
                 <li className='flex items-center'>
                     <Link className='inter-medium' to="/main">Discover our garden
                     </Link>
-          
+                    <img className='w-[30px]' src={leaf} alt="" />
                 </li>
             </ul>
             <h1 className='uppercase open-sans-bold text-[32px]'>book garden</h1>
@@ -47,3 +47,6 @@ const MenuBar = () => {
    
 
              
+
+
+

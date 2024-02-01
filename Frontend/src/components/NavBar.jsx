@@ -1,33 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import arrow from "../assets/arrow_pagination.svg"
+import leaf from "../assets/leaf.jpg"
 
 function NavBar() {
   return (
-    <nav className='flex w-full justify-between flex-wrap'>
-        <ul className='flex gap-[10px]'>
-            <li>
-                <Link to="/main">Discover our garden</Link>
+    <header className='max-container padding-container'>
+    <nav className='flex w-full justify-between items-center'>
+        <ul className='flex gap-[50px] inter-medium items-center'>
+            <li className='flex items-center'>
+                <Link className='inter-medium' to="/main">Discover our garden
+                </Link>
+                <img className='w-[30px]' src={leaf} alt="" />
             </li>
             <li>
-                <Link to="/myAccount">My books</Link>
-            </li>
-        </ul>
-        <h1 className='uppercase'>book garden</h1>
-        <ul className='flex justify-between gap-[10px]'>
-            <li>
-                <Link to="/myAccount">My Account</Link>
-            </li>
-            <li>
-                <button>Log out</button>
+                <Link className='inter-medium' to="/myAccount">My books</Link>
             </li>
         </ul>
-        <div className='basis-[100%] flex '>
-            <Link to="/main">main</Link>
-            <img src={arrow} alt="" />
-            <Link to="/myAccount">account</Link>
-        </div>
+        <h1 className='uppercase open-sans-bold text-[32px]'>book garden</h1>
+        <ul className='flex justify-between gap-[50px]'>
+            <li>
+                <Link className='inter-medium' to="/myAccount">My Account</Link>
+            </li>
+            <li>
+                <button className='inter-medium'>Log out</button>
+            </li>
+        </ul>
     </nav>
+    </header>
   )
 }
 
