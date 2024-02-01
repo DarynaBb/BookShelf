@@ -12,7 +12,7 @@ const Logout = () => {
         {},
         { withCredentials: true }
       );
-  
+
       if (resp.status === 200) {
         console.log("You are logged out!", resp.data);
         setShowExit(true);
@@ -23,13 +23,15 @@ const Logout = () => {
       console.log(error.message);
     }
   };
-  
+
   return (
     <div>
-      {showExit && (
-        <div className='size-96 rounded-md bg-gradient-to-r from-blue-500 to-transparent '></div>
-      )}
-      <button onClick={logoutHandler}>LOGOUT</button>
+      <button
+        onClick={logoutHandler}
+        className='bg-gray-200 text-gray-800 mr-10 text-lg px-4 py-2 hover:shadow-md'
+      >
+        LOGOUT
+      </button>
     </div>
   );
 };
