@@ -4,7 +4,7 @@ import "react-phone-number-input/style.css";
 //import backendUrl from "../config/config.js";
 //import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Logout from "../components/Logout";
+import Logout from "./Logout";
 import { useAuth } from "../context/LoginContext";
 
 const SignUp = () => {
@@ -22,7 +22,7 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const { isLoggedIn, login } = useAuth(); 
+  const { isLoggedIn, login } = useAuth();
   const navigate = useNavigate();
   const closeForm = () => {
     setIsOpen(false);
@@ -109,17 +109,17 @@ const SignUp = () => {
     setErrorMessage("");
   };
   return (
-          <div className='relative'>
-              {!isLoggedIn && 
-            !isOpen && (
-              <button
-                onClick={toggleDropdown}
-                className='bg-gray-200 text-gray-800 text-lg px-4 py-2 hover:shadow-md'>
-                Sign up
-              </button>
-            )}
-            {isOpen && (
-        <span className='fixed top-1 right-1 mt-2 w-482 h-720 flex-shrink-0 bg-white border border-gray-300 p-4'>
+    <div className='relative'>
+      {!isLoggedIn && !isOpen && (
+        <button
+          onClick={toggleDropdown}
+          className='bg-gray-200 text-gray-800 text-lg px-4 py-2 hover:shadow-md'
+        >
+          Sign up
+        </button>
+      )}
+      {isOpen && (
+        <span className='fixed top-1 right-1 mt-2 w-482 h-720 z-10 flex-shrink-0 bg-white border border-gray-300 p-4'>
           <svg
             className='fixed right-5 top-5 cursor-pointer'
             width='30'
@@ -237,13 +237,10 @@ const SignUp = () => {
               SIGN UP
             </button>
           </form>
-          </span>
-        )}
-         {isLoggedIn && (
-           <Logout />
-           )}
-      </div>
-
-);
-    }
+        </span>
+      )}
+      {isLoggedIn && <Logout />}
+    </div>
+  );
+};
 export default SignUp;

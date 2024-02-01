@@ -34,7 +34,7 @@ function AccountInMenu() {
 
   return (
     <div onClick={(e) => showAccountHandler(e, 'profile')}>
-     
+    
         <div >
           <button onClick={showDetailHandler}>
             {showDetail && (
