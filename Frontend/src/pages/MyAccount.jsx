@@ -15,7 +15,7 @@ function MyAccount() {
   return (
     <>
     <NavBar />
-    <section className='max-container padding-container'>
+    <section className='max-container padding-container mb-[100px]'>
         <Pagination path='/myAccount' page="Profile" />
         <div className='flex justify-between'>
             <div className='basis-[20%]'>
