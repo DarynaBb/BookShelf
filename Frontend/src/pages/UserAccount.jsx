@@ -4,6 +4,8 @@ import UserProfile from '../components/UserProfile'
 import { useContext } from 'react';
 import { UserProfileContext } from '../context/UserProfileContext';
 import { UserBooksContext } from '../context/UserBooksContext';
+import { Link } from 'react-router-dom';
+import arrow from "../assets/arrow_pagination.svg"
 
 function UserAccount() {
   const {isProfileOpen, setIsProfileOpen } = useContext(UserProfileContext);
@@ -55,6 +57,11 @@ function UserAccount() {
     <>
     <NavBar />
     <section className='max-container padding-container'>
+        <div className='basis-[100%] flex text-[14px] mb-[20px] bg-bg-gray'>
+            <Link to="/main">Main</Link>
+            <img src={arrow} alt="" />
+            <Link to="/myAccount">Account</Link>
+        </div>
         <div className='flex justify-between'>
           <div className='basis-[20%] flex flex-col gap-[10px]'>
           <h2 className='pt-regular text-[32px]'>Account</h2>

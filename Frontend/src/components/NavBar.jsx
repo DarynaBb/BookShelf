@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import arrow from "../assets/arrow_pagination.svg"
 import leaf from "../assets/leaf.jpg"
 
 function NavBar() {
@@ -27,11 +26,6 @@ function NavBar() {
             </li>
         </ul>
     </nav>
-    <div className='basis-[100%] flex text-[14px] mt-[50px] bg-bg-gray'>
-        <Link to="/main">Main</Link>
-        <img src={arrow} alt="" />
-        <Link to="/myAccount">Account</Link>
-    </div>
     </header>
   )
 }
