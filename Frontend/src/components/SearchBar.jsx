@@ -24,14 +24,12 @@ const SearchBar = ({ onSearch }) => {
 
   return (
     <div>
-      {/* Komponente: Einfache große Sucheingabe */}
+
       <div className="relative my-6">
         <input
           type="text"
           placeholder="Search by title, author or genre"
           className="relative w-full h-12 px-4 pr-12 transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
-          value={searchQuery}
-          onChange={handleSearchChange}
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -55,5 +53,4 @@ const SearchBar = ({ onSearch }) => {
     </div>
   );
 };
-
 export default SearchBar;

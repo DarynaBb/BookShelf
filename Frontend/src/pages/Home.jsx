@@ -1,8 +1,8 @@
-import React from "react";
+//import React from "react";
 import SearchBar from "../components/SearchBar";
 import BookImage from "../assets/image-29.png";
 import MenuBar from "../components/MenuBar";
-
+import { useNavigate } from "react-router-dom";
 import ContactBar from "../components/ContactBar";
 
 const handleSearch = (query) => {
@@ -10,11 +10,15 @@ const handleSearch = (query) => {
 };
 
 const Home = () => {
+  const navigate=useNavigate()
+  const handle=()=> {
+    navigate("/myAccount")
+  }
   return (
     <div className="bg-[#ffeed94c]">
       <MenuBar />
       <SearchBar onSearch={handleSearch} />
-
+<button onClick={handle}>click here</button>
       <div className="text-center">
         <img
           src={BookImage}
