@@ -1,10 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import { UserProfileContext } from '../context/UserProfileContext';
-import { UserBooksContext } from '../context/UserBooksContext';
 import UserProfile from '../components/UserProfile';
 import NavBar from '../components/NavBar';
-import { Link, NavLink } from 'react-router-dom';
-import arrow from "../assets/arrow_pagination.svg"
 import AccountNavigation from '../components/AccountNavigation';
 import Pagination from '../components/Pagination';
 
@@ -14,6 +11,7 @@ function MyAccount() {
     useEffect(() => {
         setIsProfileOpen(true);
     }, [])
+
   return (
     <>
     <NavBar />
