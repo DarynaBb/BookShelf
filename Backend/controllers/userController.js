@@ -122,9 +122,9 @@ export const getUserData = async(req, res) => {
 }
 export const updateUser = async(req, res) => {
   const userId = req.params.id;
-  const {email, firstName, lastName} = req.body;
+  const {email, firstName, lastName, photo} = req.body;
   try {
-    const user = await User.findByIdAndUpdate(userId, {email, firstName, lastName});
+    const user = await User.findByIdAndUpdate(userId, {email, firstName, lastName, photo});
     if (!user) {
       return res.status(404).send("User not found");
     }

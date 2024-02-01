@@ -1,6 +1,5 @@
 import React, {useContext, useEffect} from 'react'
 import { UserProfileContext } from '../context/UserProfileContext';
-import { UserBooksContext } from '../context/UserBooksContext';
 import UserProfile from '../components/UserProfile';
 import NavBar from '../components/NavBar';
 import AccountNavigation from '../components/AccountNavigation';

@@ -9,6 +9,8 @@ const UserProfileContextProvider = ({ children }) => {
     const [userId, setUserId] = useState("65ba24b0cbd9068c6509d1e2");
     const url = "http://localhost:3001";
     const [user, setUser] = useState({});
+    const [isEditing, setIsEditing] = useState(false);
+    const [isUserUpdated, setIsUserUpdated] = useState(false);
 
     const getUserData = async() => {
         const axiosUrl = `${url}/user/${userId}`;
@@ -25,7 +27,8 @@ const UserProfileContextProvider = ({ children }) => {
 return (
     <UserProfileContext.Provider
         value={{isProfileOpen, setIsProfileOpen,
-            getUserData, isLoading, user, userId
+            getUserData, isLoading, user, userId,
+            isEditing, setIsEditing, isUserUpdated, setIsUserUpdated
             
         }}
     >
