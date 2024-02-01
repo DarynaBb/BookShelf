@@ -41,23 +41,6 @@ function MyBooks() {
             break;
         }
       };
-    // const showCurrentlyReading = () => {
-    //     setIsCurrentlyReading(true);
-    //     setIsWantToRead(false);
-    //     setIsRead(false);
-    //   }
-    
-    //   const showRead = () => {
-    //     setIsCurrentlyReading(false);
-    //     setIsWantToRead(false);
-    //     setIsRead(true);
-    //   }
-    
-    //   const showWantToRead = () => {
-    //     setIsCurrentlyReading(false);
-    //     setIsWantToRead(true);
-    //     setIsRead(false);
-    //   }
 
     useEffect(() => {
         setIsMyBooksOpen(true);
@@ -70,11 +53,6 @@ function MyBooks() {
     <>
         <NavBar />
         <section className='max-container padding-container'>
-        {/* <div className='basis-[100%] flex text-[14px] mb-[20px] bg-bg-gray'>
-            <Link to="/main">Main</Link>
-            <img src={arrow} alt="" />
-            <Link to="/myAccount">Account</Link>
-        </div> */}
         <Pagination path="/myBooks" page="My Books" />
         <div className='flex justify-between'>
             <nav className='basis-[20%]'>
@@ -95,9 +73,7 @@ function MyBooks() {
             <div className='basis-[75%]'>
                 <UserBooks />
             </div>
-            
         </div>
-        
         </section>
         
     </>
