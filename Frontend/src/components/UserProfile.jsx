@@ -19,6 +19,8 @@ function UserProfile() {
     setIsUserUpdated(false);
   }, [isUserUpdated])
 
+ 
+
   const updateUserField = async (e, field) => {
     e.preventDefault();
     const axiosUrl = `${url}/user/${userId}`;
