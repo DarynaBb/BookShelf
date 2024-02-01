@@ -25,7 +25,7 @@ function UserData() {
                 </div>
               </div>
               <div className='mt-[15px]'>
-                <button onClick={() => setIsEditing(prevState => !prevState)} className={!isEditing ? "block bg-black py-[20px] w-[210px] text-white" : "hidden"}>EDIT</button>
+                <button onClick={() => setIsEditing(true)} className={!isEditing ? "block bg-black py-[20px] w-[210px] text-white" : "hidden"}>EDIT YOUR PROFILE</button>
               </div>
             </div>
   )

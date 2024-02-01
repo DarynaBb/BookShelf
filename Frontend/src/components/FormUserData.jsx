@@ -74,7 +74,6 @@ function FormUserData() {
             <button className='bg-black py-[20px] w-[210px] text-white' onClick={(e) => saveChanges(e)}>Save</button>
             <button className='bg-black py-[20px] w-[210px] text-white' onClick={(e) => {e.preventDefault(); setIsEditing(false)}}>Close</button>
            </div>
-           
           </form>
   )
 }
