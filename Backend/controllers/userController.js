@@ -132,16 +132,3 @@ export const updateUser = async(req, res) => {
   } catch (error) {
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
