@@ -1,7 +1,10 @@
 // SearchResultPage.jsx
-import React from 'react';
+import React, { useContext } from 'react';
+import { SearchContext } from '../context/SearchContext'; // Benutzung von geschweiften Klammern, um den benannten Export zu importieren
 
-const SearchResultPage = ({ searchResults }) => {
+const SearchResultPage = () => {
+  const { searchResults } = useContext(SearchContext);
+
   return (
     <div>
       <h2>Suchergebnisse</h2>
