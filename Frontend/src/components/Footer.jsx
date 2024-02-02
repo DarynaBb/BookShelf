@@ -24,14 +24,14 @@ function Footer() {
       }  
 
   return (
-    <footer className={`${location.pathname === "/myBooks" || location.pathname === "/myAccount" ? "bg-white" : "bg-bg-beige"}`}>
-        <div className='max-container padding-container'>
-            <div className='text-center mb-[100px]'>
+    <footer className={`${location.pathname === "/myBooks" || location.pathname === "/myAccount" ? "bg-bg-gray" : "bg-bg-beige"}`}>
+        <div className='max-container padding-container '>
+            {/* <div className='text-center mb-[100px]'>
                 <Link to="/main" className='uppercase open-sans-bold text-[32px]'>book garden</Link>
-            </div>
+            </div> */}
             <div className='flex justify-between items-center'>
                 <div className='pt-regular text-[24px] basis-[25%]'>
-                    <h4>Book Garden - where words come alive in bytes.</h4>
+                    <h4><span className='pt-bold'>Book Garden</span> - where words come alive in bytes.</h4>
                 </div>
                 <ul className='basis-[70%] flex flex-wrap justify-end' >
                     {renderlinks()}

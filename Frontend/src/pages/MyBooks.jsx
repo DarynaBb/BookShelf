@@ -5,6 +5,7 @@ import UserBooks from '../components/UserBooks';
 import NavBar from '../components/NavBar';
 import AccountNavigation from '../components/AccountNavigation';
 import Pagination from "../components/Pagination";
+import Footer from '../components/Footer';
 
 function MyBooks() {
     const {isMyBooksOpen, setIsMyBooksOpen, isCurrentlyReading, isWantToRead, isRead, setIsCurrentlyReading, setIsWantToRead, setIsRead} = useContext(UserBooksContext);  
@@ -13,6 +14,7 @@ function MyBooks() {
         { type: 'wantToRead', label: 'Want to read', isActive: isWantToRead },
         { type: 'read', label: 'Read', isActive: isRead },
       ]);
+
 
       const handleNavigationClick = (type) => {
         setNavigationItems((prevItems) =>
@@ -48,33 +50,42 @@ function MyBooks() {
         setIsWantToRead(false);
         setIsRead(false);
     }, [])
+
+    
     
   return (
     <>
         <NavBar />
-        <section className='max-container padding-container'>
-        <Pagination path="/myBooks" page="My Books" />
-        <div className='flex justify-between'>
-            <nav className='basis-[20%]'>
-                <AccountNavigation />
-                <ul className={`${isMyBooksOpen ? "block mt-[10px]" : "hidden"}`}>
-                    {navigationItems.map((item, index) => (
-                <li
-                    key={index}
-                    className={`pl-[70px] flex items-center gap-[8px] cursor-pointer`}
-                        onClick={() => handleNavigationClick(item.type)}
-                    >
-                        <div className={`${item.isActive ? "w-[8px] h-[8px] bg-black rounded-[50%]" : ""}`} />
-                        <p>{item.label}</p>
-                    </li>
-                    ))}
-                </ul>
-            </nav>
-            <div className='basis-[75%]'>
-                <UserBooks />
+        <section className='min-h-screen flex flex-col'>
+            <div className='max-container padding-container mb-[150px] w-full'>
+                <Pagination path="/myBooks" page="My Books" />
+                <div className='flex justify-between'>
+                    <nav className='basis-[20%]'>
+                        <AccountNavigation />
+                        <ul className={`${isMyBooksOpen ? "block mt-[10px]" : "hidden"}`}>
+                            {navigationItems.map((item, index) => (
+                        <li
+                            key={index}
+                            className={`pl-[70px] flex items-center gap-[8px] cursor-pointer`}
+                                onClick={() => handleNavigationClick(item.type)}
+                            >
+                                <div className={`${item.isActive ? "w-[8px] h-[8px] bg-black rounded-[50%]" : ""}`} />
+                                <p>{item.label}</p>
+                            </li>
+                            ))}
+                        </ul>
+                    </nav>
+                    <div className='basis-[75%]'>
+                        <UserBooks />
+                    </div>
+                </div>
             </div>
-        </div>
+            <div className='mt-auto'>
+                <Footer />
+            </div>
+        
         </section>
+        
         
     </>
     
@@ -82,3 +93,4 @@ function MyBooks() {
 }
 
 export default MyBooks
+
