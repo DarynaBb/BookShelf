@@ -251,14 +251,15 @@ import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [phone, setPhone] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+
+  const [isOpen, setIsOpen] = useState(true); 
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
     telephone: "",
     countryCode: "+49",
     email: "",
-    password: "",
+    password: ""
   });
 
   const navigate = useNavigate();
@@ -271,8 +272,6 @@ const SignUp = () => {
     const telephone = phone;
     const email = form.email.value;
     const password = form.password.value;
-
-   
     if (
       firstname.trim() === "" ||
       lastname.trim() === "" ||
@@ -280,10 +279,9 @@ const SignUp = () => {
       email.trim() === "" ||
       password.trim() === ""
     ) {
-   
+      setErrorMessage("Please fill in all fields");
       return;
     }
-
     try {
       const resp = await fetch(`http://localhost:3001/register`, {
         method: "POST",
@@ -298,8 +296,10 @@ const SignUp = () => {
           password,
         }),
       });
-
+    
       if (resp.status === 201) {
+        const responseData = await resp.json();
+    
         setFormData({
           firstname: "",
           lastname: "",
@@ -308,35 +308,39 @@ const SignUp = () => {
           email: "",
           password: "",
         });
-       
+    
+        login(true);
+        setEmailError(false);
+        setPasswordError(false);
+        setErrorMessage("");
         navigate("/main");
+    
+        console.log("Register done:", responseData);
       } else {
- 
-        console.log("Error while signing up:", resp.data);
+        const errorData = await resp.json();
+    
+        console.log("Error while signing up:", errorData);
+        setErrorMessage("Incorrect email or password");
+        setEmailError(true);
+        setPasswordError(true);
       }
     } catch (error) {
       console.log("Error while signing up:", error);
     }
-  };
+  }
   const closeForm = () => {
-        setIsOpen(false);
-       };
+    setIsOpen(false);
+    navigate("/main");
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value, errorMessage: "" });
   };
 
   return (
     <div className='relative'>
-      {/* {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className='bg-gray-200 text-gray-800 text-lg px-4 py-2 hover:shadow-md'
-        >
-          My Account
-        </button>
-      )} */}
-      {/* {isOpen && ( */}
+      {isOpen && (
         <div className='fixed top-1 right-1 mt-2 w-482 h-720 z-10 flex-shrink-0 bg-white border border-gray-300 p-4'>
           <svg
             className='fixed right-5 top-5 cursor-pointer'
@@ -387,9 +391,7 @@ const SignUp = () => {
             <label
               htmlFor='countryCode'
               className='block text-black font-Inter text-base font-normal'
-            >
-              Telephone number
-            </label>
+            >Telephone number</label>
             <span>
               <PhoneInput
                 className='mb-3 w-434 flex-shrink-0 border border-solid border-gray-300  overflow-hidden bg-white'
@@ -447,8 +449,7 @@ const SignUp = () => {
             </button>
           </form>
         </div>
-      {/* )} */}
-
+      )}
     </div>
   );
 };
