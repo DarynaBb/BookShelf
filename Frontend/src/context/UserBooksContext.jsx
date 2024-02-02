@@ -16,6 +16,9 @@ const UserBooksContextProvider = ({ children }) => {
     const [isMyBooksOpen, setIsMyBooksOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [chosenCurrentlyBook, setChosenCurrentlyBook] = useState([]);
+    const [chosenWantToReadBook, setChosenWantToReadBook] = useState([]);
+    const [chosenReadBook, setChosenReadBook] = useState([]);
+    
     
 
 
@@ -54,6 +57,8 @@ const UserBooksContextProvider = ({ children }) => {
             shelfType: event.target.value
           });
           setChosenCurrentlyBook([]);
+          setChosenWantToReadBook([]);
+          setChosenReadBook([]);
         } catch (error) {
           console.error('Error updating shelf type:', error.message);
         } 
@@ -83,7 +88,9 @@ const UserBooksContextProvider = ({ children }) => {
                 isShelfUpdated, setIsShelfUpdated,
                 isBookDeleted, setIsBookDeleted,
                 userId, changeShelf, deleteBook,
-                isMyBooksOpen, setIsMyBooksOpen, url, isLoading, chosenCurrentlyBook, setChosenCurrentlyBook
+                isMyBooksOpen, setIsMyBooksOpen, url, isLoading, chosenCurrentlyBook, 
+                setChosenCurrentlyBook, chosenWantToReadBook, setChosenWantToReadBook,
+                chosenReadBook, setChosenReadBook
             }}
         >
             {children}
