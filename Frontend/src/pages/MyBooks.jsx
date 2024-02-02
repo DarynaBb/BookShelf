@@ -14,6 +14,7 @@ function MyBooks() {
         { type: 'read', label: 'Read', isActive: isRead },
       ]);
 
+
       const handleNavigationClick = (type) => {
         setNavigationItems((prevItems) =>
           prevItems.map((item) => ({
@@ -48,11 +49,13 @@ function MyBooks() {
         setIsWantToRead(false);
         setIsRead(false);
     }, [])
+
+    
     
   return (
     <>
         <NavBar />
-        <section className='max-container padding-container'>
+        <section className='max-container padding-container mb-[150px]'>
         <Pagination path="/myBooks" page="My Books" />
         <div className='flex justify-between'>
             <nav className='basis-[20%]'>
@@ -82,3 +85,4 @@ function MyBooks() {
 }
 
 export default MyBooks
+
