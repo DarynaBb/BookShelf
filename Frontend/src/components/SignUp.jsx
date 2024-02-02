@@ -328,15 +328,15 @@ const SignUp = () => {
 
   return (
     <div className='relative'>
-      {!isOpen && (
+      {/* {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
           className='bg-gray-200 text-gray-800 text-lg px-4 py-2 hover:shadow-md'
         >
           My Account
         </button>
-      )}
-      {isOpen && (
+      )} */}
+      {/* {isOpen && ( */}
         <div className='fixed top-1 right-1 mt-2 w-482 h-720 z-10 flex-shrink-0 bg-white border border-gray-300 p-4'>
           <svg
             className='fixed right-5 top-5 cursor-pointer'
@@ -447,7 +447,7 @@ const SignUp = () => {
             </button>
           </form>
         </div>
-      )}
+      {/* )} */}
 
     </div>
   );
