@@ -18,6 +18,7 @@ const UserBooksContextProvider = ({ children }) => {
     const [chosenCurrentlyBook, setChosenCurrentlyBook] = useState([]);
     const [chosenWantToReadBook, setChosenWantToReadBook] = useState([]);
     const [chosenReadBook, setChosenReadBook] = useState([]);
+    const [progressValue, setProgressValue] = useState(0);
     
     
 
@@ -73,7 +74,6 @@ const UserBooksContextProvider = ({ children }) => {
         } catch (error) {
           console.error('Error deliting a book:', error.message);
         }
-        
       }
 
     return (
@@ -91,7 +91,8 @@ const UserBooksContextProvider = ({ children }) => {
                 userId, changeShelf, deleteBook,
                 isMyBooksOpen, setIsMyBooksOpen, url, isLoading, chosenCurrentlyBook, 
                 setChosenCurrentlyBook, chosenWantToReadBook, setChosenWantToReadBook,
-                chosenReadBook, setChosenReadBook
+                chosenReadBook, setChosenReadBook,
+                progressValue, setProgressValue
             }}
         >
             {children}

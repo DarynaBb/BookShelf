@@ -6,7 +6,8 @@ const bookSchema = new mongoose.Schema({
   description: { type: String },
   publishedDate: { type: String },
   averageRating: {type: String},
-  image: {type: String}
+  image: {type: String},
+  pageCount: {type: Number}
 });
 
 export const Book = mongoose.model("Book", bookSchema);

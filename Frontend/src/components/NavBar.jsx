@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
-import leaf from "../assets/leaf.jpg"
+
 
 
 
@@ -13,7 +13,6 @@ function NavBar() {
             <li className='flex items-center'>
                 <Link className='inter-medium' to="/">Discover our garden
                 </Link>
-                <img className={location.pathname === "/myAccount" || location.pathname === "/myBooks" ? "block w-[30px]" : "hidden"} src={leaf} alt="" />
             </li>
             <li>
                 <Link className='inter-medium' to="/myBooks">My books</Link>

@@ -3,6 +3,10 @@ import { UserBooksContext } from '../context/UserBooksContext';
 import star from "../assets/star24Px.svg"
 import arrow from "../assets/arrowForward.svg"
 import { Link } from 'react-router-dom';
+import ProgressBar from './ProgressBar';
+import { UserProfileContext } from '../context/UserProfileContext';
+import axios from 'axios';
+
 
 function UserBooks() {
   const {
@@ -11,7 +15,7 @@ function UserBooks() {
     setIsCurrentlyReading,
     isWantToRead,
     setIsWantToRead,
-    isRead,
+    isRead,url,
     setIsRead,
     currentlyReading,
     wantToRead,
@@ -21,20 +25,71 @@ function UserBooks() {
     changeShelf,
     deleteBook,
     isMyBooksOpen, isLoading, chosenCurrentlyBook, setChosenCurrentlyBook,
-    chosenWantToReadBook, setChosenWantToReadBook, chosenReadBook, setChosenReadBook
+    chosenWantToReadBook, setChosenWantToReadBook, chosenReadBook, setChosenReadBook, progressValue, setProgressValue
   } = useContext(UserBooksContext);
+  const {userId} = useContext(UserProfileContext);
   
+  const [showProgress, setShowProgress] = useState(true); 
+  const [pageCount, setPageCount] = useState(0);
+  const [chosenCurrentId, setChosenCurrentId] = useState('');
+  const [chosenWantId, setChosenWantId] = useState('');
+  const [chosenReadId, setChosenReadId] = useState('');
+
   useEffect(() => {
     getBooks();
   }, [isShelfUpdated, isBookDeleted]);
 
   useEffect(() => {
-    if (isLoading && currentlyReading.length > 0) {
-      const book = currentlyReading.filter((book, index) => index === 0);
+    const updateProgress = async () => {
+      const bookId = chosenCurrentlyBook[0].book._id;
+      console.log("BookId",bookId);
+      try {
+        const axiosUrl = `${url}/updateBook/${userId}/${bookId}`;
+        await axios.patch(axiosUrl, {
+          progress: progressValue
+        });
+        console.log("Uiii!")
+      } catch (error) {
+        console.error('Error updating progress:', error.message);
+      } 
+    };
+    updateProgress();
+  },[progressValue])
+
+  // useEffect(() => {
+  //   if (isLoading && currentlyReading.length > 0) {
+  //     const book = currentlyReading.filter((book, index) => index === 0);
+  //     setChosenCurrentlyBook(book);
+  //     const numberOfPages = book[0].pageCount;
+  //     setPageCount(numberOfPages);
+  //     console.log("BOOK", chosenCurrentlyBook)
+  //     console.log("pages",pageCount)
+  //   }  
+  // },[])
+
+  // useEffect(() => {
+  //   const 
+  // },[])
+  
+
+  const onClickHandler = (id, shelf) => {
+    const book = shelf.filter((book) => book.book._id === id);
+    if (shelf === currentlyReading) {
       setChosenCurrentlyBook(book);
-      console.log("BOOK", chosenCurrentlyBook)
-    }  
-  },[])
+      const numberOfPages = book[0].book.pageCount;
+      const progress = book[0].progress;
+      setPageCount(numberOfPages);
+      setProgressValue(progress);
+      setChosenCurrentId(id);
+    } else if (shelf === wantToRead) {
+      setChosenWantToReadBook(book);
+      setChosenWantId(id);
+    } else {
+      setChosenReadBook(book);
+      setChosenReadId(id);
+    }
+    
+  };
 
   const slideLeft = () => {
     var slider = document.getElementById('slider');
@@ -45,19 +100,7 @@ function UserBooks() {
     var slider = document.getElementById('slider');
     slider.scrollLeft = slider.scrollLeft + 500;
   };
-
-  const onClickHandler = (title, shelf) => {
-    
-    const book = shelf.filter((book) => book.book.title === title);
-    if (shelf === currentlyReading) {
-      setChosenCurrentlyBook(book);
-    } else if (shelf === wantToRead) {
-      setChosenWantToReadBook(book);
-    } else {
-      setChosenReadBook(book);
-    }
-    
-  };
+  
 
   return (
     <section className=''>
@@ -67,7 +110,7 @@ function UserBooks() {
           <p className='pt-regular text-[32px] mb-[24px]'>Currently reading ({currentlyReading.length} {currentlyReading.length !== 1 ? "books" : "book"})</p>
           {chosenCurrentlyBook?.map(book => (
             <div key={book.book._id} className='mb-[60px]'>
-            <div className='flex justify-between'>
+            <div className='flex justify-between gap-[20px]'>
               <img className='max-w-[286px]' src={book.book.image} alt="" />
               <div className='flex flex-col justify-between'>
                 <div>
@@ -75,6 +118,12 @@ function UserBooks() {
                 <p>by {book.book.author}</p>
                 <p className='pt-regular mt-[20px]'>{book.book.description}</p>
               </div>
+              <div className=''>
+                {console.log("progressValue", progressValue)}
+                <p>{progressValue}</p>
+              <ProgressBar/>
+              </div>  
+              
               <div className='flex justify-between gap-[20px]'>
                 <div className='flex items-start gap-[5px]'>
                   <p className='inter-semi-bold text-[14px]'>Move to:</p>
@@ -93,7 +142,7 @@ function UserBooks() {
                 <p>{book.book.averageRating}</p>
                 <img src={star} className='w-[20px]' alt="" />
               </div>
-              <p>58%</p>
+              <p>{((progressValue / Number(book.book.pageCount)) * 100).toFixed(0)}%</p>
             </div>
             </div> 
           ))}   
@@ -102,18 +151,21 @@ function UserBooks() {
               <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
             </div>
             <ul id='slider' className='flex gap-[20px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
-              {currentlyReading?.map((book, index) => (
-                <li onClick={() => onClickHandler(book.book.title, currentlyReading)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
-                  <img className='max-w-[160px]  h-full object-cover hover:-translate-y-3 ease-in-out duration-500' src={book.book.image} alt="" />
-                  <div className='flex mt-[10px] justify-between items-center'>
-                    <div className='flex gap-[5px] items-center'>
-                      <p>{book.book.averageRating}</p>
-                      <img src={star} className='w-[20px]' alt="" />
+              {currentlyReading?.filter(book => book.book._id !== chosenCurrentId).map((book, index) => 
+                
+                (
+                  <li onClick={() => onClickHandler(book.book._id, currentlyReading)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
+                    <img className='max-w-[160px] h-full object-cover hover:-translate-y-3 ease-in-out duration-500' src={book.book.image} alt="" />
+                    <div className='flex mt-[10px] justify-between items-center'>
+                      <div className='flex gap-[5px] items-center'>
+                        <p>{book.book.averageRating}</p>
+                        <img src={star} className='w-[20px]' alt="" />
+                      </div>
+                      <p>{((book.progress / Number(book.book.pageCount)) * 100).toFixed()}%</p>
                     </div>
-                    <p>58%</p>
-                  </div>
-                </li>
-              ))}
+                  </li>
+                ) 
+              )}
             </ul>
           <div>
             <img src={arrow} className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight} alt="" />
@@ -168,8 +220,8 @@ function UserBooks() {
             <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
           </div>
           <ul id='slider' className='flex gap-[20px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
-            {wantToRead?.map((book, index) => (
-              <li onClick={() => onClickHandler(book.book.title, wantToRead)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
+            {wantToRead?.filter(book => book.book._id !== chosenWantId).map((book, index) => (
+              <li onClick={() => onClickHandler(book.book._id, wantToRead)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
                 <img className='max-w-[160px]  h-full object-cover hover:-translate-y-3 ease-in-out duration-500' src={book.book.image} alt="" />
                 <div className='flex mt-[10px] justify-between items-center'>
                   <div className='flex gap-[5px] items-center'>
@@ -203,7 +255,7 @@ function UserBooks() {
         <p className='pt-regular text-[32px] mb-[24px]'>Read ({read.length} {read.length > 1 ? "books" : "book"})</p>
         {chosenReadBook?.map(book => (
           <div key={book.book._id} className='mb-[60px]'>
-          <div className='flex justify-between'>
+          <div className='flex justify-between gap-[20px]'>
             <img className='max-w-[286px]' src={book.book.image} alt="" />
             <div className='flex flex-col justify-between'>
               <div>
@@ -238,8 +290,8 @@ function UserBooks() {
             <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
           </div>
           <ul id='slider' className='flex gap-[20px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
-            {read?.map((book, index) => (
-              <li onClick={() => onClickHandler(book.book.title, read)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
+            {read?.filter(book => book.book._id !== chosenReadId).map((book, index) => (
+              <li onClick={() => onClickHandler(book.book._id, read)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
                 <img className='max-w-[160px]  h-full object-cover hover:-translate-y-3 ease-in-out duration-500' src={book.book.image} alt="" />
                 <div className='flex mt-[10px] justify-between items-center'>
                   <div className='flex gap-[5px] items-center'>
