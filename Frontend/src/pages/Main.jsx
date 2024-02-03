@@ -70,7 +70,7 @@ const Main = () => {
 
             <PopularBooksBar books={popularBooks} />
 
-            <ContactBar />
+            {/* <ContactBar /> */}
         </div>
     );
 };
