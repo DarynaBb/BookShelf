@@ -64,11 +64,12 @@ const UserBooksContextProvider = ({ children }) => {
         } 
       };
     
-      const deleteBook = async (id) => {
+      const deleteBook = async (id, chosenBook) => {
         setIsBookDeleted(true);
         try {
           const axiosUrl = `${url}/deleteBook/${userId}/${id}`
           await axios.delete(axiosUrl);
+          chosenBook([]);
         } catch (error) {
           console.error('Error deliting a book:', error.message);
         }

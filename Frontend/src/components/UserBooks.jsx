@@ -84,7 +84,7 @@ function UserBooks() {
                     <option value="read">Read</option>
                   </select>
                 </div>
-                <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id)}>Delete book</button>
+                <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenCurrentlyBook)}>Delete book</button>
              </div>
             </div>
             </div>
@@ -133,7 +133,7 @@ function UserBooks() {
         <p className='pt-regular text-[32px] mb-[24px]'>Want to read ({wantToRead.length} {wantToRead.length > 1 ? "books" : "book"})</p>
         {chosenWantToReadBook?.map(book => (
           <div key={book.book._id} className='mb-[60px]'>
-          <div className='flex justify-between'>
+          <div className='flex justify-between gap-[20px]'>
             <img className='max-w-[286px]' src={book.book.image} alt="" />
             <div className='flex flex-col justify-between'>
               <div>
@@ -150,7 +150,7 @@ function UserBooks() {
                   <option value="read">Read</option>
                 </select>
               </div>
-              <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id)}>Delete book</button>
+              <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenWantToReadBook)}>Delete book</button>
            </div>
           </div>
           </div>
@@ -220,7 +220,7 @@ function UserBooks() {
                   <option value="read">Read</option>
                 </select>
               </div>
-              <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id)}>Delete book</button>
+              <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenReadBook)}>Delete book</button>
            </div>
           </div>
           </div>
