@@ -111,16 +111,15 @@ function UserBooks() {
           {chosenCurrentlyBook?.map(book => (
             <div key={book.book._id} className='mb-[60px]'>
             <div className='flex justify-between gap-[20px]'>
-              <img className='max-w-[286px]' src={book.book.image} alt="" />
+              <img className='min-w-[286px] object-cover' src={book.book.image} alt="" />
               <div className='flex flex-col justify-between'>
                 <div>
                   <p className='inter-semi-bold text-[20px]'>{book.book.title}</p>
                 <p>by {book.book.author}</p>
                 <p className='pt-regular mt-[20px]'>{book.book.description}</p>
               </div>
-              <div className=''>
-                {console.log("progressValue", progressValue)}
-                <p>{progressValue}</p>
+              <div className='my-[20px]'>
+                <p className='mb-[10px]'>You are on page {progressValue} from {book.book.pageCount}</p>
               <ProgressBar/>
               </div>  
               
@@ -186,7 +185,7 @@ function UserBooks() {
         {chosenWantToReadBook?.map(book => (
           <div key={book.book._id} className='mb-[60px]'>
           <div className='flex justify-between gap-[20px]'>
-            <img className='max-w-[286px]' src={book.book.image} alt="" />
+            <img className='min-w-[286px]' src={book.book.image} alt="" />
             <div className='flex flex-col justify-between'>
               <div>
                 <p className='inter-semi-bold text-[20px]'>{book.book.title}</p>
@@ -256,7 +255,7 @@ function UserBooks() {
         {chosenReadBook?.map(book => (
           <div key={book.book._id} className='mb-[60px]'>
           <div className='flex justify-between gap-[20px]'>
-            <img className='max-w-[286px]' src={book.book.image} alt="" />
+            <img className='min-w-[286px]' src={book.book.image} alt="" />
             <div className='flex flex-col justify-between'>
               <div>
                 <p className='inter-semi-bold text-[20px]'>{book.book.title}</p>
