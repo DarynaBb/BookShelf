@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
     {
       book: { type: mongoose.Schema.Types.ObjectId, ref: 'Book' },
       shelfType: { type: String, default: "wantToRead"},
+      progress: {type: Number, default: 0}
     },
   ]
 });
