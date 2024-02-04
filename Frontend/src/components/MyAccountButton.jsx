@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SignUp from "./SignUp"; 
 import SignIn from "./SignIn";
+import LogIn from "./LogIn";
 
 const MyAccountButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ const MyAccountButton = () => {
           My Account
         </button>
       )}
-      {isOpen && <SignIn />}
+      {isOpen && <LogIn />}
     </div>
   );
 };

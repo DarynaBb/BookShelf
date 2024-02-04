@@ -3,7 +3,8 @@ import leaf from "../assets/leaf.jpg";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/LoginContext";
 import { UserProfileContext } from "../context/UserProfileContext";
-import MyAccountButton from "./MyAccountButton";
+// import MyAccountButton from "./MyAccountButton";
+import LoginDropdown from "./LoginDropdown";
 
 
 const MenuBar = () => {
@@ -28,7 +29,8 @@ const MenuBar = () => {
         </ul>
         <h1 className='uppercase open-sans-bold text-[32px]'>book garden</h1>
         <div className='flex items-center px-6 ml-auto lg:ml-0 lg:p-0'>
-   <MyAccountButton />
+   {/* <MyAccountButton /> */}
+         <LoginDropdown />
         </div>
       </nav>
     </header>

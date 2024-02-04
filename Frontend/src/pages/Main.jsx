@@ -14,6 +14,7 @@ import Author3Image from '../assets/image 33.png';
 import BookImage2 from '../assets/image 27.png';
 import BookImage3 from '../assets/image 28.png';
 import ContactBar from '../components/ContactBar';
+import LoggedInMenuBar from '../components/LoggedInMenuBar';
 
 const books = [
   { id: 1, title: 'Buch 1', author: 'Autor 1',score: 4.3, isFavorite: true, image: BookImage2 },
@@ -52,7 +53,7 @@ const handleSearch = (query) => {
 const Main = () => {
     return (
         <div className='bg-[#ffeed94c]'>
-            <MenuBar />
+            <LoggedInMenuBar />
             <SearchBar onSearch={handleSearch} />
 
             <div className="text-center">
@@ -70,7 +71,7 @@ const Main = () => {
 
             <PopularBooksBar books={popularBooks} />
 
-            <ContactBar />
+            {/* <ContactBar /> */}
         </div>
     );
 };

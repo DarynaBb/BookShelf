@@ -32,7 +32,7 @@ const Home = () => {
           style={{ width: "100%", maxWidth: "800px", margin: "auto" }}
         />
       </div>
-      <ContactBar />
+      {/* <ContactBar /> */}
     </div>
   );
 };
