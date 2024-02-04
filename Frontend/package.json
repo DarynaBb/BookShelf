@@ -23,7 +23,6 @@
     "react-phone-number-input": "^3.3.9",
     "react-router-dom": "^6.21.3",
     "react-slider": "^2.0.6",
-    "swiper": "^11.0.5",
     "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
