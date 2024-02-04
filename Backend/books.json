@@ -1,0 +1,95 @@
+
+  
+[
+    {
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "description": "The Catcher in the Rye is a classic novel written by J.D. Salinger. It explores the challenges of adolescence through the perspective of its teenage protagonist, Holden Caulfield.",
+      "publishedDate": "July 16, 1951",
+      "averageRating": "4.0",
+      "image": "https://i.pinimg.com/564x/10/e2/ef/10e2eff094997c942230e479d9df66aa.jpg",
+      "pageCount": 277
+    },
+    {
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "description": "To Kill a Mockingbird is a powerful novel by Harper Lee that delves into the issues of racial injustice in the American South. The story unfolds through the eyes of Scout Finch, a young girl growing up in the 1930s.",
+      "publishedDate": "July 11, 1960",
+      "averageRating": "4.5",
+      "image": "https://i.pinimg.com/564x/c5/95/6a/c5956ab435f2ffc0cc8a4d17860bd718.jpg",
+      "pageCount": 281
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "description": "1984 is a dystopian novel by George Orwell, depicting a totalitarian society where the government monitors and controls every aspect of life. The story follows the protagonist, Winston Smith, as he rebels against the oppressive regime.",
+      "publishedDate": "June 8, 1949",
+      "averageRating": "4.2",
+      "image": "https://i.pinimg.com/564x/b6/4f/ba/b64fba1a17bd0acd7022bc8742a77e91.jpg",
+      "pageCount": 328
+    },
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "The Great Gatsby, written by F. Scott Fitzgerald, is a classic tale set in the Roaring Twenties. It explores themes of wealth, love, and the elusive American Dream through the eyes of its narrator, Nick Carraway.",
+      "publishedDate": "April 10, 1925",
+      "averageRating": "4.3",
+      "image": "https://i.pinimg.com/564x/cb/7b/2a/cb7b2a660d8e24b356161a95eed1f673.jpg",
+      "pageCount": 180
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "description": "Pride and Prejudice is a timeless romance novel by Jane Austen, set in early 19th-century England. The story revolves around the spirited Elizabeth Bennet and the proud Mr. Darcy.",
+      "publishedDate": "January 28, 1813",
+      "averageRating": "4.2",
+      "image": "https://i.pinimg.com/564x/f4/8d/18/f48d18a70437c76ea3c58e66ac44cc46.jpg",
+      "pageCount": 279
+    },
+    {
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "description": "The Hobbit, written by J.R.R. Tolkien, takes readers on an adventurous journey through Middle-earth with Bilbo Baggins. It is a precursor to the epic events in The Lord of the Rings.",
+      "publishedDate": "September 21, 1937",
+      "averageRating": "4.3",
+      "image": "https://i.pinimg.com/564x/c3/5f/5f/c35f5fc4cd884f2fbfdc79283a4e0191.jpg",
+      "pageCount": 310
+    },
+    {
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "author": "J.K. Rowling",
+      "description": "Harry Potter and the Sorcerer's Stone is the first book in the magical Harry Potter series by J.K. Rowling. Join Harry as he discovers his wizarding abilities and embarks on a journey at Hogwarts School of Witchcraft and Wizardry.",
+      "publishedDate": "June 26, 1997",
+      "averageRating": "4.5",
+      "image": "https://i.pinimg.com/564x/54/8f/f9/548ff994c07a511045aa096717aa9189.jpg",
+      "pageCount": 309
+    },
+    {
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "description": "The Lord of the Rings is an epic fantasy trilogy by J.R.R. Tolkien, set in the enchanting world of Middle-earth. The story follows the quest to destroy the One Ring and defeat the dark lord Sauron.",
+      "publishedDate": "July 29, 1954",
+      "averageRating": "4.5",
+      "image": "https://i.pinimg.com/564x/9e/77/35/9e7735a98eeb23f629a8ef20c59666eb.jpg",
+      "pageCount": 1178
+    },
+    {
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "description": "Brave New World is a dystopian novel by Aldous Huxley, offering a thought-provoking exploration of a future society driven by technology, consumerism, and social engineering.",
+      "publishedDate": "October 1, 1932",
+      "averageRating": "4.0",
+      "image": "https://i.pinimg.com/564x/bc/be/e6/bcbee64cb478a5dcf676001b8d0bc204.jpg",
+      "pageCount": 311
+    },
+    {
+      "title": "The Chronicles of Narnia: The Lion, the Witch and the Wardrobe",
+      "author": "C.S. Lewis",
+      "description": "The Lion, the Witch and the Wardrobe is a fantasy novel by C.S. Lewis, part of The Chronicles of Narnia series. Join the Pevensie siblings as they enter the magical land of Narnia and face the White Witch with the help of the great lion Aslan.",
+      "publishedDate": "October 16, 1950",
+      "averageRating": "4.2",
+      "image": "https://i.pinimg.com/564x/67/bf/50/67bf50ac2150d821db69b8bb0231c236.jpg",
+      "pageCount": 206
+    }
+  ]
+  

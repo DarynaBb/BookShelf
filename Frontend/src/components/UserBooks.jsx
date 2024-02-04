@@ -8,6 +8,7 @@ import { UserProfileContext } from '../context/UserProfileContext';
 import axios from 'axios';
 
 
+
 function UserBooks() {
   const {
     getBooks,
@@ -54,22 +55,9 @@ function UserBooks() {
       } 
     };
     updateProgress();
+    getBooks();
   },[progressValue])
 
-  // useEffect(() => {
-  //   if (isLoading && currentlyReading.length > 0) {
-  //     const book = currentlyReading.filter((book, index) => index === 0);
-  //     setChosenCurrentlyBook(book);
-  //     const numberOfPages = book[0].pageCount;
-  //     setPageCount(numberOfPages);
-  //     console.log("BOOK", chosenCurrentlyBook)
-  //     console.log("pages",pageCount)
-  //   }  
-  // },[])
-
-  // useEffect(() => {
-  //   const 
-  // },[])
   
 
   const onClickHandler = (id, shelf) => {
@@ -151,7 +139,6 @@ function UserBooks() {
             </div>
             <ul id='slider' className='flex gap-[20px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
               {currentlyReading?.filter(book => book.book._id !== chosenCurrentId).map((book, index) => 
-                
                 (
                   <li onClick={() => onClickHandler(book.book._id, currentlyReading)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
                     <img className='max-w-[160px] h-full object-cover hover:-translate-y-3 ease-in-out duration-500' src={book.book.image} alt="" />
@@ -175,7 +162,6 @@ function UserBooks() {
           <p className='pt-regular text-[28px]'>Explore some new ones</p>
           <Link className='pt-regular text-[28px] underline' to="/main">here.</Link>
         </>)
-        
     ) : ("")}
 
 {isWantToRead ? (
@@ -210,7 +196,7 @@ function UserBooks() {
               <p>{book.book.averageRating}</p>
               <img src={star} className='w-[20px]' alt="" />
             </div>
-            <p>58%</p>
+            <p>{((book.progress / book.book.pageCount) * 100).toFixed(0)}%</p>
           </div>
           </div> 
         ))}   
@@ -227,7 +213,7 @@ function UserBooks() {
                     <p>{book.book.averageRating}</p>
                     <img src={star} className='w-[20px]' alt="" />
                   </div>
-                  <p>58%</p>
+                  <p>{((book.progress / book.book.pageCount) * 100).toFixed(0)}%</p>
                 </div>
               </li>
             ))}
@@ -280,7 +266,7 @@ function UserBooks() {
               <p>{book.book.averageRating}</p>
               <img src={star} className='w-[20px]' alt="" />
             </div>
-            <p>58%</p>
+            <p>100%</p>
           </div>
           </div> 
         ))}   
@@ -297,7 +283,7 @@ function UserBooks() {
                     <p>{book.book.averageRating}</p>
                     <img src={star} className='w-[20px]' alt="" />
                   </div>
-                  <p>58%</p>
+                  <p>100%</p>
                 </div>
               </li>
             ))}
