@@ -95,19 +95,19 @@ function UserBooks() {
       <h2 className={isMyBooksOpen ? "block pt-regular text-[32px] mb-[24px]" : "hidden"}>My Books</h2>
       {isCurrentlyReading ? (
         currentlyReading.length > 0 ? (<>
-          <p className='pt-regular text-[32px] mb-[24px]'>Currently reading ({currentlyReading.length} {currentlyReading.length !== 1 ? "books" : "book"})</p>
+          <h3 className='pt-regular text-[32px] mb-[24px]'>Currently reading ({currentlyReading.length} {currentlyReading.length !== 1 ? "books" : "book"})</h3>
           {chosenCurrentlyBook?.map(book => (
             <div key={book.book._id} className='mb-[60px]'>
-            <div className='flex justify-between gap-[20px]'>
+            <div className='flex justify-between gap-[40px]'>
               <img className='min-w-[286px] object-cover' src={book.book.image} alt="" />
-              <div className='flex flex-col justify-between'>
+              <div className='flex flex-col justify-between '>
                 <div>
                   <p className='inter-semi-bold text-[20px]'>{book.book.title}</p>
                 <p>by {book.book.author}</p>
                 <p className='pt-regular mt-[20px]'>{book.book.description}</p>
               </div>
               <div className='my-[20px]'>
-                <p className='mb-[10px]'>You are on page {progressValue} from {book.book.pageCount}</p>
+                <p className='mb-[10px]'>You are on page {progressValue} of {book.book.pageCount}</p>
               <ProgressBar/>
               </div>  
               
@@ -120,10 +120,11 @@ function UserBooks() {
                     <option value="read">Read</option>
                   </select>
                 </div>
-                <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenCurrentlyBook)}>Delete book</button>
+                <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenCurrentlyBook)}>REMOVE</button>
              </div>
             </div>
             </div>
+            
             <div className='flex mt-[20px] justify-between items-center max-w-[286px]'>
               <div className='flex gap-[5px] items-center'>
                 <p>{book.book.averageRating}</p>
@@ -133,14 +134,17 @@ function UserBooks() {
             </div>
             </div> 
           ))}   
+          <div className={chosenCurrentlyBook.length > 0 ? "block mt-[60px] mb-[40px]" : "hidden"}>
+              <h3 className='pt-regular text-[32px]'>Also reading </h3>
+          </div>
           <div className='flex justify-between items-center'>
-            <div>
+            {/* <div>
               <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
-            </div>
-            <ul id='slider' className='flex gap-[20px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
+            </div> */}
+            <ul id='slider' className='flex gap-[100px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
               {currentlyReading?.filter(book => book.book._id !== chosenCurrentId).map((book, index) => 
                 (
-                  <li onClick={() => onClickHandler(book.book._id, currentlyReading)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
+                  <li onClick={() => onClickHandler(book.book._id, currentlyReading)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer'>
                     <img className='max-w-[160px] h-full object-cover hover:-translate-y-3 ease-in-out duration-500' src={book.book.image} alt="" />
                     <div className='flex mt-[10px] justify-between items-center'>
                       <div className='flex gap-[5px] items-center'>
@@ -153,7 +157,11 @@ function UserBooks() {
                 ) 
               )}
             </ul>
-          <div>
+            {/* <div>
+              <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
+            </div> */}
+          <div className='flex items-center'>
+          <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
             <img src={arrow} className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight} alt="" />
           </div>
         </div> 
@@ -187,7 +195,7 @@ function UserBooks() {
                   <option value="read">Read</option>
                 </select>
               </div>
-              <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenWantToReadBook)}>Delete book</button>
+              <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenWantToReadBook)}>REMOVE</button>
            </div>
           </div>
           </div>
@@ -199,12 +207,15 @@ function UserBooks() {
             <p>{((book.progress / book.book.pageCount) * 100).toFixed(0)}%</p>
           </div>
           </div> 
-        ))}   
+        ))}
+        <div className={chosenWantToReadBook.length > 0 ? "block mt-[60px] mb-[40px]" : "hidden"}>
+          <h3 className='pt-regular text-[32px]'>More</h3>
+        </div>   
         <div className='flex justify-between items-center'>
           <div>
             <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
           </div>
-          <ul id='slider' className='flex gap-[20px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
+          <ul id='slider' className='flex gap-[100px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
             {wantToRead?.filter(book => book.book._id !== chosenWantId).map((book, index) => (
               <li onClick={() => onClickHandler(book.book._id, wantToRead)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
                 <img className='max-w-[160px]  h-full object-cover hover:-translate-y-3 ease-in-out duration-500' src={book.book.image} alt="" />
@@ -257,7 +268,7 @@ function UserBooks() {
                   <option value="read">Read</option>
                 </select>
               </div>
-              <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenReadBook)}>Delete book</button>
+              <button className='bg-black text-white py-[20px] px-[75px]' onClick={() => deleteBook(book.book._id, setChosenReadBook)}>REMOVE</button>
            </div>
           </div>
           </div>
@@ -269,12 +280,15 @@ function UserBooks() {
             <p>100%</p>
           </div>
           </div> 
-        ))}   
+        ))}  
+        <div className={chosenReadBook.length > 0 ? "block mt-[60px] mb-[40px]" : "hidden"}>
+          <h3 className='pt-regular text-[32px]'>More</h3>
+        </div>  
         <div className='flex justify-between items-center'>
           <div>
             <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
           </div>
-          <ul id='slider' className='flex gap-[20px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
+          <ul id='slider' className='flex gap-[100px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
             {read?.filter(book => book.book._id !== chosenReadId).map((book, index) => (
               <li onClick={() => onClickHandler(book.book._id, read)} key={book.book._id} className='flex flex-col gap-[20px] cursor-pointer '>
                 <img className='max-w-[160px]  h-full object-cover hover:-translate-y-3 ease-in-out duration-500' src={book.book.image} alt="" />
