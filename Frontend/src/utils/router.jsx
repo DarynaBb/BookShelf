@@ -6,6 +6,8 @@ import Main from "../pages/Main";
 import SearchResultPage from '../pages/SearchResultPage';
 import MyAccount from '../pages/MyAccount';
 import MyBooks from '../pages/MyBooks';
+import TestSearch from "../pages/TestSearch";
+import TestResult from "../pages/TestResult";
 
 
 const router = createBrowserRouter([
@@ -17,6 +19,8 @@ const router = createBrowserRouter([
       { path: '/search', element: <SearchResultPage /> },
       { path: '/myAccount', element: <MyAccount />},
       { path: '/myBooks', element: <MyBooks />},
+      { path: '/testsearch', element: <TestSearch />},
+      { path: '/testresult', element: <TestResult />},
       { path: "*", element: <PageNotFound />,},
     ],
   },
