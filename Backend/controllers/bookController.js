@@ -4,9 +4,10 @@ import mongoose from "mongoose";
 
 export const addNewBook = async (req, res) => {
     try {
-      const newBook = new Book(req.body);
-      await newBook.save();
-      res.status(201).send("Book was added");
+      // const newBook = new Book(req.body);
+      // await newBook.save();
+      const newBook = await Book.create(req.body);
+      res.status(201).send(newBook);
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
