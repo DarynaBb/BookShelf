@@ -15,6 +15,7 @@ import BookImage2 from '../assets/image 27.png';
 import BookImage3 from '../assets/image 28.png';
 import ContactBar from '../components/ContactBar';
 import LoggedInMenuBar from '../components/LoggedInMenuBar';
+import NewSearchBar from '../components/NewSearchBar';
 
 const books = [
   { id: 1, title: 'Buch 1', author: 'Autor 1',score: 4.3, isFavorite: true, image: BookImage2 },
@@ -52,12 +53,14 @@ const handleSearch = (query) => {
 
 const Main = () => {
     return (
-        <div className='bg-[#ffeed94c]'>
-            <LoggedInMenuBar />
-            <SearchBar onSearch={handleSearch} />
-
-            <div className="text-center">
-                <img src={BookImage} alt="Book" style={{ width: '100%', maxWidth: '800px', margin: 'auto' }} />
+      <section className='bg-bg-beige'>
+      <LoggedInMenuBar />
+        <div className='max-container padding-container'>
+            
+            {/* <SearchBar onSearch={handleSearch} /> */}
+            <NewSearchBar />
+            <div className="">
+                <img className='' src={BookImage} alt="Book" />
             </div>
             <BookCarousel books={books} />
 
@@ -73,6 +76,7 @@ const Main = () => {
 
             {/* <ContactBar /> */}
         </div>
+        </section>
     );
 };
 

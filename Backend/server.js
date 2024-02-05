@@ -13,12 +13,17 @@ const PORT = process.env.PORT || 3001;
 
 await connectMongoose();
 const app = express();
-app.use(express.json());
-app.use( cookieParser() );
 app.use( cors({
-    origin: process.env.CLIENT_URL, 
+    origin: process.env.CLIENT_URL,
     credentials: true 
   }) );
+
+ console.log(process.env.CLIENT_URL); 
+  
+app.use(express.json());
+
+app.use( cookieParser() );
+
 
 // app.use("/", router)
 app.use("/", authRouter)

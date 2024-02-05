@@ -61,30 +61,33 @@ const MenuBar = () => {
   return (
     <header className='max-container padding-container'>
       <nav className='flex w-full justify-between items-center'>
-        <ul className='flex gap-[50px] inter-medium items-center'>
+        <ul className='flex gap-[50px] inter-medium items-center basis-[30%]'>
           <li className='flex items-center'>
             <Link className='inter-medium' to='/main'>
               Discover our garden
             </Link>
-            <img className='w-[30px]' src={leaf} alt='' />
+            
           </li>
         </ul>
-        <h1 className='uppercase open-sans-bold text-[32px]'>book garden</h1>
-        <div className='flex items-center px-6 ml-auto lg:ml-0 lg:p-0'>
-        <span className='font-bold text-sm '>Hi, {userName}</span>
-        <Link
-            onClick={handleMyAccount}
-            className='text-sm  hover:text-textGreen bg-[#e9a4504c] rounded-md p-1 ml-4'
-          >
-            My Account
-          </Link>
-        <Link
-            onClick={handleLogOut}
-            className='text-sm  hover:text-textGreen bg-[#e9a4504c] rounded-md p-1 ml-4'
-          >
-            logout
-          </Link>
-   {/* <MyAccountButton /> */}
+        <div className="basis-[40%] flex justify-center">
+          <h1 className='uppercase open-sans-bold text-[32px]'>book garden</h1>
+        </div>
+        
+        <div className='flex justify-between items-center px-6 ml-auto lg:ml-0 lg:p-0 basis-[30%]'>
+          <span className='font-bold text-sm '>Hi, {userName}</span>
+          <Link
+              onClick={handleMyAccount}
+              className='text-sm  hover:text-textGreen bg-[#e9a4504c] rounded-md p-1 ml-4'
+            >
+              My Account
+            </Link>
+          <Link
+              onClick={handleLogOut}
+              className='text-sm  hover:text-textGreen bg-[#e9a4504c] rounded-md p-1 ml-4'
+            >
+              logout
+            </Link>
+    {/* <MyAccountButton /> */}
          
         </div>
       </nav>
