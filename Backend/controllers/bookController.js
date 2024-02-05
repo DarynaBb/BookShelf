@@ -108,13 +108,18 @@ export const addBookToUser = async (req, res) => {
         return res.status(404).send("User not found");
       }
 
-      if (user.favoriteBooks.some((favBook) => favBook.book.equals(targetBookId))) {
+      const isBookAlreadyInFavorites = user.favoriteBooks.some((favBook) => {
+        // Check if 'favBook' and 'favBook.book' are defined
+        return favBook && favBook.book && favBook.book.equals(targetBookId);
+      });
+
+      if (isBookAlreadyInFavorites) {
         return res.status(400).send("Book is already in favorites.");
       } else {
-        await User.findByIdAndUpdate(userId, { $push: { favoriteBooks: {book: bookId }}},
-            { new: true });
+        await User.findByIdAndUpdate(userId, { $push: { favoriteBooks: { book: bookId } } }, { new: true });
         res.status(200).send("Book was added");
-      }     
+      }
+
     } catch (error) {
         console.error(error);
         res
@@ -123,25 +128,3 @@ export const addBookToUser = async (req, res) => {
     }
 }
   
-// const updateProgress = async (req, res) => {
-//   const bookId = req.params.bookId;
-//     const userId = req.params.userId;
-//     const progressValue = req.body.progressValue;
-
-//     try {
-//         const updatedUser = await User.findOneAndUpdate(
-//             { _id: userId, "favoriteBooks.book": bookId },
-//             { $set: { "favoriteBooks.$.progress": progressValue } },
-//             { new: true }
-//           );
-//           if (!updatedUser) {
-//             return res.status(404).send("User or book not found");
-//           }
-//           res.status(200).send("Progress updated successfully");
-//     } catch (error) {
-//         console.error(error);
-//       res
-//         .status(500)
-//         .json({ message: "Internal Server Error", error: error.message });
-//     }
-// } 

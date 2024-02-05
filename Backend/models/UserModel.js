@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
   },
   firstName: {type: String},
   lastName: {type: String},
-  photo: {type: String, default: "https://i.ibb.co/kGY5Pgn/userPic.jpg"},
+  photo: {type: String, default: "https://i.pinimg.com/564x/43/4f/12/434f12781a3eeb3b04dec93882ef503e.jpg"},
   favoriteGenres: [],
   favoriteBooks: [
     {

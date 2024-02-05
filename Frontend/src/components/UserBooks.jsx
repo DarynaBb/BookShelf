@@ -59,6 +59,7 @@ function UserBooks() {
   },[progressValue])
 
   
+  
 
   const onClickHandler = (id, shelf) => {
     const book = shelf.filter((book) => book.book._id === id);
@@ -138,9 +139,9 @@ function UserBooks() {
               <h3 className='pt-regular text-[32px]'>Also reading </h3>
           </div>
           <div className='flex justify-between items-center'>
-            {/* <div>
+            <div>
               <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
-            </div> */}
+            </div>
             <ul id='slider' className='flex gap-[100px] max-w-[700px] h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide '>
               {currentlyReading?.filter(book => book.book._id !== chosenCurrentId).map((book, index) => 
                 (
@@ -160,8 +161,8 @@ function UserBooks() {
             {/* <div>
               <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
             </div> */}
-          <div className='flex items-center'>
-          <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" />
+          <div className=''>
+            {/* <img src={arrow} className='rotate-180 opacity-50 cursor-pointer hover:opacity-100' onClick={slideLeft} alt="" /> */}
             <img src={arrow} className='opacity-50 cursor-pointer hover:opacity-100' onClick={slideRight} alt="" />
           </div>
         </div> 
