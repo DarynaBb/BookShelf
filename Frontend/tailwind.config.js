@@ -5,6 +5,7 @@ export default {
       extend: {
         colors: {
           "bg-gray": '#F4F5F5',
+          "btn-gray": '#E8E8E8',
           "bg-beige": '#F8F3ED',
           "bg-progress": "#FEE830"
       },
